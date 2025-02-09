@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { ButtonStyled } from './Button.styled';
+import PropTypes from "prop-types";
+import { ButtonStyled } from "./Button.styled";
 
 const Button = ({ children, background, textColor, width }) => {
   return (
@@ -10,7 +10,7 @@ const Button = ({ children, background, textColor, width }) => {
 };
 
 Button.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node,
   background: PropTypes.string,
   textColor: PropTypes.string,
   width: PropTypes.string,

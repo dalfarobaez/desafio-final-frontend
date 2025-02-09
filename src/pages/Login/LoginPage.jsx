@@ -1,11 +1,12 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
 
-import FlexContainer from "../../components/layout/FlexContainer";
-import styled from "styled-components";
-import InputField from "../../components/inputField/InputField";
+import InputField from "../../components/ui/inputField/InputField";
 import colors from "../../styles/colors";
-import device from "../../styles/breakpoints";
+import Button from "../../components/ui/button/Button";
+import AuthContainer from "../../components/layout/AuthContainer";
+import FormStyle from "../../components/authForm/Form";
+import { Link } from "react-router-dom";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -25,66 +26,47 @@ const LoginPage = () => {
     console.log("Formulario enviado: ", values);
     resetForm();
   };
+
   return (
     <>
-      <FirstContainerStyled>
+      <AuthContainer>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
           {({ isSubmitting }) => (
-            <Form>
+            <FormStyle>
               <h2>Iniciar sesión</h2>
               <InputField
                 label="Email"
                 name="email"
-                placeholder="Ingrese su email"
+                placeholder="Email"
                 showError={true}
               />
               <InputField
                 label="Contraseña"
                 name="password"
                 type="password"
-                placeholder="Ingrese su contraseña"
+                placeholder="Contraseña"
                 showError={true}
               />
-              <InputField
-                label="Email"
-                name="email"
-                placeholder="Ingrese su email"
-                showError={true}
-              />
-            </Form>
+
+              <Button
+                background={colors.forkPrimary}
+                width="200px"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                Iniciar sesión
+              </Button>
+              <Link to="/register">¿No tienes cuenta? Regístrate!</Link>
+            </FormStyle>
           )}
         </Formik>
-      </FirstContainerStyled>
+      </AuthContainer>
     </>
   );
 };
 
-const FirstContainerStyled = styled(FlexContainer)`
-  padding: 50px;
-  justify-content: center;
-  align-items: center;
-  background-color: red;
-  width: 100%;
-  form {
-    h2 {
-      margin: 20px 0;
-    }
-    padding: 30px;
-    width: 100%;
-    max-width: 650px;
-    min-height: 300px;
-    background-color: ${colors.forkLight};
-    display: flex;
-    flex-flow: column nowrap;
-    /* gap: 20px; */
-    border-radius: 3px;
-    @media ${device.md} {
-      max-width: 650px;
-    }
-  }
-`;
 export default LoginPage;
