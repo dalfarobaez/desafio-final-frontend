@@ -1,5 +1,14 @@
+import ProductDetailsCard from '../../components/productDetailsCard/ProductDetailsCard';
+import ProductToolbar from '../../components/productToolbar/ProductToolbar';
+import { ProductDetailsPageStyled } from './ProductDetailsPage.styles';
+
 const ProductDetailsPage = () => {
-  return <div>ProductDetailsPage</div>;
+  return (
+    <ProductDetailsPageStyled>
+      <ProductToolbar />
+      <ProductDetailsCard />
+    </ProductDetailsPageStyled>
+  );
 };
 
 export default ProductDetailsPage;

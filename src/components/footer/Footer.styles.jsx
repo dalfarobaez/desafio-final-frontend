@@ -36,7 +36,7 @@ const FooterStyled = styled(FlexContainer).attrs({
   }
 
   @media ${device.lg} {
-    min-height: 260px;
+    min-height: 300px;
   }
 `;
 

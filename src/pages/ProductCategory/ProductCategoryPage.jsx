@@ -1,7 +1,7 @@
 import ProductGrid from '../../components/layout/ProductGrid';
 import ProductCard from '../../components/productCard/ProductCard';
 import ProductToolbar from '../../components/productToolbar/ProductToolbar';
-import { ProductCategoryPageStyled } from './ProductCategoryPage.styled';
+import { ProductCategoryPageStyled } from './ProductCategoryPage.styles';
 
 const ProductCategoryPage = () => {
   return (
