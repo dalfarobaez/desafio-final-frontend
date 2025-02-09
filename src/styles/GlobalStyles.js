@@ -3,11 +3,12 @@ import device from './breakpoints';
 
 const GlobalStyles = createGlobalStyle`
   #root {
+    min-height: 100vh;
     max-width: 1920px;
     margin: 0 auto;
     text-align: center;
   }
-
+  
   * {
     margin: 0;
     padding: 0;

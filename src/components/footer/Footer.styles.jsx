@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import device from '../../styles/breakpoints';
 import colors from '../../styles/colors';
 import FlexContainer from '../layout/FlexContainer';
 
@@ -32,6 +33,10 @@ const FooterStyled = styled(FlexContainer).attrs({
   > svg:nth-of-type(3) {
     bottom: 0;
     right: 0;
+  }
+
+  @media ${device.lg} {
+    min-height: 260px;
   }
 `;
 

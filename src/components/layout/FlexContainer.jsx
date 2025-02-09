@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// Contenedor flexible
 const FlexContainer = styled.div`
   display: flex;
   flex-wrap: ${(props) => props.wrap || 'nowrap'};

@@ -1,11 +1,15 @@
-import StoreLayout from './layouts/StoreLayout';
+import { AppContextProvider } from './context/AppProvider';
+import StoreLayout from './layouts/StoreLayout/StoreLayout';
+import AppRouter from './Routes/AppRouter';
 import GlobalStyles from './styles/GlobalStyles';
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <StoreLayout />
+      <AppContextProvider>
+        <AppRouter />
+      </AppContextProvider>
     </>
   );
 }
