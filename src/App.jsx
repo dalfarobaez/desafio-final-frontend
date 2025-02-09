@@ -1,15 +1,18 @@
-import { AppContextProvider } from './context/AppProvider';
-import StoreLayout from './layouts/StoreLayout/StoreLayout';
-import AppRouter from './Routes/AppRouter';
-import GlobalStyles from './styles/GlobalStyles';
+import { HelmetProvider } from "react-helmet-async";
+import { AppContextProvider } from "./context/AppProvider";
+import StoreLayout from "./layouts/StoreLayout/StoreLayout";
+import AppRouter from "./Routes/AppRouter";
+import GlobalStyles from "./styles/GlobalStyles";
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <AppContextProvider>
-        <AppRouter />
-      </AppContextProvider>
+      <HelmetProvider>
+        <AppContextProvider>
+          <AppRouter />
+        </AppContextProvider>
+      </HelmetProvider>
     </>
   );
 }
