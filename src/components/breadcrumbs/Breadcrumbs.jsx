@@ -26,9 +26,4 @@ BreadCrumbs.propTypes = {
   product: PropTypes.string,
 };
 
-BreadCrumbs.defaultProps = {
-  category: null,
-  product: null,
-};
-
 export default BreadCrumbs;

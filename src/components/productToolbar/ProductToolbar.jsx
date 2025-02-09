@@ -7,7 +7,7 @@ const ProductToolbar = () => {
   return (
     <ProductToolbarStyled>
       <MainWrapper>
-        <BreadCrumbs />
+        <BreadCrumbs category={'Ensaladas & Bowls'} />
         <Filters />
       </MainWrapper>
     </ProductToolbarStyled>
