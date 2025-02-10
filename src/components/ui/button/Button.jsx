@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import { ButtonStyled } from "./Button.styled";
+import PropTypes from 'prop-types';
+import { ButtonStyled } from './Button.styles';
 
 const Button = ({ children, background, textColor, width }) => {
   return (
