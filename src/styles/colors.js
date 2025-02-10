@@ -6,6 +6,7 @@ const colors = {
   forkDark: "#282828",
   forkBlack: "#000000",
   forkWhite: "#FFFFFF",
+  forkOverlayBg: "rgba(0,0,0,.5)",
 };
 
 export default colors;

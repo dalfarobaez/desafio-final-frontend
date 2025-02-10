@@ -1,6 +1,8 @@
-import styled from 'styled-components';
-import colors from '../../styles/colors';
-import FlexContainer from '../layout/FlexContainer';
+import styled from "styled-components";
+import colors from "../../styles/colors";
+import FlexContainer from "../layout/FlexContainer";
+import { Link } from "react-router-dom";
+import MainWrapper from "../layout/MainWrapper";
 
 const FirstContainerStyled = styled(FlexContainer)`
   justify-content: space-between;
@@ -13,6 +15,8 @@ const FirstContainerStyled = styled(FlexContainer)`
   }
 `;
 
+// const LogoContainer=styled()
+
 const SecondContainerStyled = styled(FirstContainerStyled)`
   background-color: ${colors.forkLight};
   height: 55px;
@@ -24,7 +28,7 @@ const SecondContainerStyled = styled(FirstContainerStyled)`
 `;
 
 const UserActionsContainerStyled = styled(FlexContainer).attrs({
-  as: 'nav',
+  as: "nav",
 })`
   justify-content: space-between;
   align-items: center;
@@ -34,7 +38,7 @@ const UserActionsContainerStyled = styled(FlexContainer).attrs({
   }
 `;
 
-const LoginContainerStyled = styled(FlexContainer)`
+const LoginContainerStyled = styled(FlexContainer).attrs({ as: Link })`
   justify-content: space-between;
   align-items: center;
   gap: 10px;
@@ -62,7 +66,9 @@ const LoginContainerStyled = styled(FlexContainer)`
   }
 `;
 
-const CartContainerStyled = styled(FlexContainer)`
+const CartContainerStyled = styled(FlexContainer).attrs({
+  as: Link,
+})`
   padding: 0 15px;
   position: relative;
 
@@ -90,10 +96,82 @@ const CartContainerStyled = styled(FlexContainer)`
   }
 `;
 
+const MainWrapperContainer = styled(MainWrapper)`
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+
+  p {
+    font-weight: 600;
+    font-size: 20px;
+  }
+`;
+
+const CategoriesOverlay = styled.div`
+  margin-top: 105px;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: ${colors.forkOverlayBg};
+  height: ${({ $isOverlayOpen }) => ($isOverlayOpen ? "100vh" : "0px")};
+  transition: height 300ms ease-in-out;
+`;
+
+const CategoriesList = styled(FlexContainer)`
+  background-color: ${colors.forkWhite};
+  flex-direction: column;
+  /* justify-content: flex-start;
+  align-items: flex-start; */
+  width: 250px;
+  margin-left: 30px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+  a {
+    text-align: left;
+    width: 100%;
+    padding: 10px 30px;
+    border-bottom: 1px solid ${colors.forkLight};
+    font-weight: 500;
+    font-size: 17px;
+
+    &:hover {
+      color: ${colors.forkWhite};
+      background-color: ${colors.forkPrimary};
+    }
+    &:last-child {
+      border-bottom: none;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+`;
+
+const CloseOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+  svg {
+    font-size: 40px;
+    color: ${colors.forkWhite};
+  }
+`;
+
 export {
   FirstContainerStyled,
   SecondContainerStyled,
   UserActionsContainerStyled,
   LoginContainerStyled,
   CartContainerStyled,
+  MainWrapperContainer,
+  CategoriesOverlay,
+  CategoriesList,
+  CloseOverlay,
 };
