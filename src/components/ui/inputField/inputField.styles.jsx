@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import colors from "../../../styles/colors";
-import device from "../../../styles/breakpoints";
-import FlexContainer from "../../layout/FlexContainer";
+import styled from 'styled-components';
+import device from '../../../styles/breakpoints';
+import colors from '../../../styles/colors';
+import FlexContainer from '../../layout/FlexContainer';
 
 const InputContainer = styled.div`
   height: 75px;
@@ -10,15 +10,11 @@ const InputContainer = styled.div`
 const Input = styled.input`
   height: 40px;
   width: 100%;
-  max-width: 400px;
   padding: 10px;
 
   border-radius: 5px;
 
-  border: ${({ $error }) =>
-    $error
-      ? `1px solid  ${colors.forkPrimary}`
-      : `1px solid ${colors.forkLight}`};
+  border: ${({ $error }) => ($error ? `1px solid  ${colors.forkPrimary}` : `1px solid ${colors.forkLight}`)};
 `;
 
 const ErrorMessage = styled(FlexContainer)`
