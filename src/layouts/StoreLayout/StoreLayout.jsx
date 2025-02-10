@@ -8,17 +8,10 @@ const StoreLayout = () => {
   return (
     <StoreLayoutStyled>
       <Header />
-      <CustomOutletWrapper>
-        <Outlet />
-      </CustomOutletWrapper>
+      <Outlet />
       <Footer />
     </StoreLayoutStyled>
   );
 };
 
 export default StoreLayout;
-
-const CustomOutletWrapper = styled.div`
-  margin-left: 220px;
-  width: calc(100% - 210px);
-`;

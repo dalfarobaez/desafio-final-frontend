@@ -4,10 +4,9 @@ import FlexContainer from "../layout/FlexContainer";
 import { Link } from "react-router-dom";
 
 const SideMenuContainer = styled(FlexContainer)`
-  /* position: fixed;
+  position: fixed;
   top: 0;
-  left: 0; */
-  //todo sidebar fixed
+  left: 0;
   height: 100vh;
   width: 210px;
 

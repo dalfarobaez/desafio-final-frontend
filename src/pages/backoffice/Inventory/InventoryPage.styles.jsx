@@ -6,6 +6,7 @@ const InventoryContainer = styled(FlexContainer)`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  height: 2000px;
   padding: 60px 20px;
 
   h2 {

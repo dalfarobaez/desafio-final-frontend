@@ -6,4 +6,9 @@ const AdminLayoutStyled = styled(FlexContainer)`
   height: 100vh;
 `;
 
-export default AdminLayoutStyled;
+const CustomOutletWrapper = styled.div`
+  margin-left: 210px;
+  width: 100%;
+`;
+
+export { AdminLayoutStyled, CustomOutletWrapper };
