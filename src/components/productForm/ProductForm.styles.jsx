@@ -9,6 +9,9 @@ const ProductFormStyled = styled(FlexContainer)`
   max-width: 600px;
   flex-direction: column;
   gap: 20px;
+  margin: 0 auto;
+  position: relative;
+  top: 40px;
 
   h3 {
     font-size: 24px;
