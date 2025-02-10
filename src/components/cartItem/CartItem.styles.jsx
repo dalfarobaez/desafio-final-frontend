@@ -38,7 +38,8 @@ const ItemName = styled(FlexContainer)`
   height: 100px;
   justify-content: center;
   align-items: flex-start;
-  h2 {
+  a {
+    font-weight: 700;
     text-align: left;
     font-size: 12px;
     @media ${device.md} {

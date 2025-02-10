@@ -7,13 +7,14 @@ import {
   ItemName,
   ItemPrice,
 } from "./CartItem.styles";
+import { Link } from "react-router-dom";
 
-const CartItem = ({ productImg, title, subtitle, price }) => {
+const CartItem = ({ id, productImg, title, subtitle, price }) => {
   return (
     <CartItemStyle>
       <img src={productImg} alt={title} />
       <ItemName>
-        <h2>{title}</h2>
+        <Link to={`/producto/${id}`}>{title}</Link>
         <p>{subtitle}</p>
       </ItemName>
       <ItemPrice>
@@ -31,6 +32,7 @@ const CartItem = ({ productImg, title, subtitle, price }) => {
 };
 
 CartItem.PropTypes = {
+  id: PropTypes.string,
   title: PropTypes.string,
   subtitle: PropTypes.string,
   price: PropTypes.number,

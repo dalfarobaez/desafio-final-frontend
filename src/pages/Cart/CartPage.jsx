@@ -6,6 +6,7 @@ import { Cart, CartContainer, ItemList, Total } from "./CartPage.styles";
 
 const cartItems = [
   {
+    id: "1",
     title: "Beef bourguignon",
     subtitle: "Con champiñones y tocino, 4 porciones",
     productImg:
@@ -13,6 +14,7 @@ const cartItems = [
     price: 18990,
   },
   {
+    id: "2",
     title: "Ensalada César Pollo",
     subtitle: "Con palta",
     productImg:
@@ -30,7 +32,8 @@ const CartPage = () => {
             cartItems.map((item) => {
               return (
                 <CartItem
-                  key={item.title}
+                  key={item.title + item.id}
+                  id={item.id}
                   price={item.price}
                   productImg={item.productImg}
                   subtitle={item.subtitle}
