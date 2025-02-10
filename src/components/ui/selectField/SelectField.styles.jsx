@@ -3,14 +3,22 @@ import FlexContainer from "../../layout/FlexContainer";
 import colors from "../../../styles/colors";
 import device from "../../../styles/breakpoints";
 
-const SelectContainer = styled(FlexContainer)`
-  flex-direction: column;
+const SelectContainer = styled.div`
   width: 100%;
-  /* max-width: 400px; */
   height: 75px;
 `;
 
+const SelectTitle = styled(FlexContainer)`
+  align-items: center;
+  gap: 5px;
+  label {
+    text-align: left;
+    min-width: 100px;
+  }
+`;
+
 const StyledSelect = styled.select`
+  width: 100%;
   cursor: pointer;
   font-weight: 600;
   /* padding: 8px 12px; */
@@ -41,6 +49,7 @@ const ErrorMessage = styled(FlexContainer)`
   height: 35px;
 
   p {
+    margin-left: ${({ $showLabel }) => ($showLabel ? "105px" : "none")};
     text-align: start;
     color: ${colors.forkPrimary};
     font-size: 12px;
@@ -50,4 +59,4 @@ const ErrorMessage = styled(FlexContainer)`
   }
 `;
 
-export { ErrorMessage, SelectContainer, StyledSelect };
+export { ErrorMessage, SelectContainer, StyledSelect, SelectTitle };

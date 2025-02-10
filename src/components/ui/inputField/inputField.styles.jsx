@@ -1,10 +1,19 @@
-import styled from 'styled-components';
-import device from '../../../styles/breakpoints';
-import colors from '../../../styles/colors';
-import FlexContainer from '../../layout/FlexContainer';
+import styled from "styled-components";
+import device from "../../../styles/breakpoints";
+import colors from "../../../styles/colors";
+import FlexContainer from "../../layout/FlexContainer";
 
 const InputContainer = styled.div`
   height: 75px;
+`;
+
+const InputTitle = styled(FlexContainer)`
+  align-items: center;
+  gap: 5px;
+  label {
+    text-align: left;
+    min-width: 100px;
+  }
 `;
 
 const Input = styled.input`
@@ -14,13 +23,17 @@ const Input = styled.input`
 
   border-radius: 5px;
 
-  border: ${({ $error }) => ($error ? `1px solid  ${colors.forkPrimary}` : `1px solid ${colors.forkLight}`)};
+  border: ${({ $error }) =>
+    $error
+      ? `1px solid  ${colors.forkPrimary}`
+      : `1px solid ${colors.forkLight}`};
 `;
 
 const ErrorMessage = styled(FlexContainer)`
   flex-direction: column;
   justify-content: center;
   height: 35px;
+  margin-left: ${({ $showLabel }) => ($showLabel ? "105px" : "none")};
 
   p {
     text-align: start;
@@ -32,4 +45,4 @@ const ErrorMessage = styled(FlexContainer)`
   }
 `;
 
-export { InputContainer, Input, ErrorMessage };
+export { InputContainer, Input, ErrorMessage, InputTitle };

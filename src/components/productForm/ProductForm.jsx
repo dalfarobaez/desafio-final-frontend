@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import colors from "../../styles/colors";
@@ -28,33 +29,15 @@ const validationSchema = Yup.object({
   url_image: Yup.string().required("Este campo es obligatorio."),
 });
 
-const ProductForm = () => {
-  const initialValues = {
-    sku: "",
-    title: "",
-    subtitle: "",
-    categoryId: 0,
-    price: "",
-    active: false,
-    description: "",
-    featured: false,
-    stock: "",
-    url_image: "",
-  };
-
-  const handleSubmit = (values, { resetForm }) => {
-    console.log("Formulario enviado: ", values);
-    resetForm();
-  };
-
+const ProductForm = ({ initialValues, onSubmit, title, button, showLabel }) => {
   return (
     <ProductFormStyled>
-      <h3>Nuevo Producto</h3>
+      <h3>{title}</h3>
       <FormWrapper>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={handleSubmit}
+          onSubmit={onSubmit}
         >
           {({ isSubmitting }) => {
             return (
@@ -64,18 +47,21 @@ const ProductForm = () => {
                   name="sku"
                   placeholder="SKU"
                   showError
+                  showLabel={showLabel}
                 />
                 <InputField
                   label="Título"
                   name="title"
                   placeholder="Título"
                   showError
+                  showLabel={showLabel}
                 />
                 <InputField
                   label="Subtítulo"
                   name="subtitle"
                   placeholder="Subtítulo"
                   showError
+                  showLabel={showLabel}
                 />
                 <SelectField
                   label="Categoría"
@@ -83,6 +69,7 @@ const ProductForm = () => {
                   options={categoriesList}
                   placeholder="Selecciona una categoría"
                   showError
+                  showLabel={showLabel}
                 />
 
                 <InputField
@@ -91,12 +78,14 @@ const ProductForm = () => {
                   type="number"
                   placeholder="Precio"
                   showError
+                  showLabel={showLabel}
                 />
                 <InputField
                   label="Descripción"
                   name="description"
                   placeholder="Descripción"
                   showError
+                  showLabel={showLabel}
                 />
                 <InputField
                   label="Stock"
@@ -104,12 +93,14 @@ const ProductForm = () => {
                   type="number"
                   placeholder="Stock disponible"
                   showError
+                  showLabel={showLabel}
                 />
                 <InputField
                   label="URL de Imagen"
                   name="url_image"
                   placeholder="URL de la imagen"
                   showError
+                  showLabel={showLabel}
                 />
                 <CheckboxContainer>
                   <CheckboxField label="Activo" name="active" />
@@ -120,7 +111,7 @@ const ProductForm = () => {
                   type="submit"
                   disabled={isSubmitting}
                 >
-                  Crear
+                  {button}
                 </Button>
               </FormContainer>
             );
@@ -129,6 +120,26 @@ const ProductForm = () => {
       </FormWrapper>
     </ProductFormStyled>
   );
+};
+
+ProductForm.proptypes = {
+  initialValues: PropTypes.shape({
+    sku: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
+    categoryId: PropTypes.number.isRequired,
+    price: PropTypes.string.isRequired,
+    active: PropTypes.bool.isRequired,
+    description: PropTypes.string,
+    featured: PropTypes.bool.isRequired,
+    stock: PropTypes.string.isRequired,
+    url_image: PropTypes.string,
+  }).isRequired,
+
+  onSubmit: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  button: PropTypes.string.isRequired,
+  showLabel: PropTypes.bool,
 };
 
 export default ProductForm;
