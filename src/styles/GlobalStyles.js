@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import device from './breakpoints';
+import { createGlobalStyle } from "styled-components";
+import device from "./breakpoints";
 
 const GlobalStyles = createGlobalStyle`
   #root {
@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body, html {
+  body, html,select {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 400;
@@ -23,6 +23,7 @@ const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;  
     -moz-osx-font-smoothing: grayscale;  
   }
+  
 
   body {
     text-align: center;
