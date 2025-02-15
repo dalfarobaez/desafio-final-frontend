@@ -5,8 +5,9 @@ import colors from "../../../styles/colors";
 const InventoryContainer = styled(FlexContainer)`
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 2000px;
+  min-height: 600px;
   padding: 60px 20px;
 
   h2 {
