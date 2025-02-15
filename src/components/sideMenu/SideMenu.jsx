@@ -1,18 +1,18 @@
-import { FaBoxes } from "react-icons/fa";
-import { RiAddBoxFill } from "react-icons/ri";
-import { IoLogOutOutline } from "react-icons/io5";
-import { ForkWhiteIcon } from "../icons";
-import { LogOut, MenuElement, SideMenuContainer } from "./SideMenu.styles";
+import { FaBoxes } from 'react-icons/fa';
+import { IoLogOutOutline } from 'react-icons/io5';
+import { RiAddBoxFill } from 'react-icons/ri';
+import { ForkWhiteIcon } from '../icons';
+import { LogOut, MenuElement, SideMenuContainer } from './SideMenu.styles';
 
 const menuItems = [
   {
-    name: "Agregar producto",
-    path: "/backoffice/agregar-producto",
+    name: 'Agregar producto',
+    path: '/backoffice/agregar-producto',
     icon: <RiAddBoxFill />,
   },
   {
-    name: "Inventario",
-    path: "/backoffice/inventario",
+    name: 'Inventario',
+    path: '/backoffice/inventario',
     icon: <FaBoxes />,
   },
 ];

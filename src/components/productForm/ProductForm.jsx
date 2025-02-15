@@ -1,32 +1,25 @@
-import PropTypes from "prop-types";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import colors from "../../styles/colors";
-import Button from "../ui/button/Button";
-import CheckboxField from "../ui/checkboxField/CheckboxField";
-import InputField from "../ui/inputField/InputField";
-import {
-  CheckboxContainer,
-  FormContainer,
-  FormWrapper,
-  ProductFormStyled,
-} from "./ProductForm.styles";
-import SelectField from "../ui/selectField/SelectField";
-import { categoriesList } from "../../utils/strings";
+import { Formik } from 'formik';
+import PropTypes from 'prop-types';
+import * as Yup from 'yup';
+import colors from '../../styles/colors';
+import { categoriesList } from '../../utils/strings';
+import Button from '../ui/button/Button';
+import CheckboxField from '../ui/checkboxField/CheckboxField';
+import InputField from '../ui/inputField/InputField';
+import SelectField from '../ui/selectField/SelectField';
+import { CheckboxContainer, FormContainer, FormWrapper, ProductFormStyled } from './ProductForm.styles';
 
 const validationSchema = Yup.object({
-  sku: Yup.string().required("Este campo es obligatorio."),
-  title: Yup.string().required("Este campo es obligatorio."),
-  subtitle: Yup.string().required("Este campo es obligatorio."),
-  categoryId: Yup.number()
-    .min(1, "Debes seleccionar una categoría válida.")
-    .required("Este campo es obligatorio."),
-  price: Yup.number().required("Este campo es obligatorio."),
+  sku: Yup.string().required('Este campo es obligatorio.'),
+  title: Yup.string().required('Este campo es obligatorio.'),
+  subtitle: Yup.string().required('Este campo es obligatorio.'),
+  categoryId: Yup.number().min(1, 'Debes seleccionar una categoría válida.').required('Este campo es obligatorio.'),
+  price: Yup.number().required('Este campo es obligatorio.'),
   active: Yup.bool(),
-  description: Yup.string().required("Este campo es obligatorio."),
+  description: Yup.string().required('Este campo es obligatorio.'),
   featured: Yup.bool(),
-  stock: Yup.number().required("Este campo es obligatorio."),
-  url_image: Yup.string().required("Este campo es obligatorio."),
+  stock: Yup.number().required('Este campo es obligatorio.'),
+  url_image: Yup.string().required('Este campo es obligatorio.'),
 });
 
 const ProductForm = ({ initialValues, onSubmit, title, button, showLabel }) => {
@@ -34,83 +27,57 @@ const ProductForm = ({ initialValues, onSubmit, title, button, showLabel }) => {
     <ProductFormStyled>
       <h3>{title}</h3>
       <FormWrapper>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={onSubmit}
-        >
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
           {({ isSubmitting }) => {
             return (
               <FormContainer>
-                <InputField
-                  label="SKU"
-                  name="sku"
-                  placeholder="SKU"
-                  showError
-                  showLabel={showLabel}
-                />
-                <InputField
-                  label="Título"
-                  name="title"
-                  placeholder="Título"
-                  showError
-                  showLabel={showLabel}
-                />
-                <InputField
-                  label="Subtítulo"
-                  name="subtitle"
-                  placeholder="Subtítulo"
-                  showError
-                  showLabel={showLabel}
-                />
+                <InputField label='SKU' name='sku' placeholder='SKU' showError showLabel={showLabel} />
+                <InputField label='Título' name='title' placeholder='Título' showError showLabel={showLabel} />
+                <InputField label='Subtítulo' name='subtitle' placeholder='Subtítulo' showError showLabel={showLabel} />
                 <SelectField
-                  label="Categoría"
-                  name="categoryId"
+                  label='Categoría'
+                  name='categoryId'
                   options={categoriesList}
-                  placeholder="Selecciona una categoría"
+                  placeholder='Selecciona una categoría'
                   showError
                   showLabel={showLabel}
                 />
 
                 <InputField
-                  label="Precio"
-                  name="price"
-                  type="number"
-                  placeholder="Precio"
+                  label='Precio'
+                  name='price'
+                  type='number'
+                  placeholder='Precio'
                   showError
                   showLabel={showLabel}
                 />
                 <InputField
-                  label="Descripción"
-                  name="description"
-                  placeholder="Descripción"
+                  label='Descripción'
+                  name='description'
+                  placeholder='Descripción'
                   showError
                   showLabel={showLabel}
                 />
                 <InputField
-                  label="Stock"
-                  name="stock"
-                  type="number"
-                  placeholder="Stock disponible"
+                  label='Stock'
+                  name='stock'
+                  type='number'
+                  placeholder='Stock disponible'
                   showError
                   showLabel={showLabel}
                 />
                 <InputField
-                  label="URL de Imagen"
-                  name="url_image"
-                  placeholder="URL de la imagen"
+                  label='URL de Imagen'
+                  name='url_image'
+                  placeholder='URL de la imagen'
                   showError
                   showLabel={showLabel}
                 />
                 <CheckboxContainer>
-                  <CheckboxField label="Activo" name="active" />
-                  <CheckboxField label="Destacado" name="featured" />
+                  <CheckboxField label='Activo' name='active' />
+                  <CheckboxField label='Destacado' name='featured' />
                 </CheckboxContainer>
-                <Button
-                  background={colors.forkPrimary}
-                  type="submit"
-                  disabled={isSubmitting}
-                >
+                <Button background={colors.forkPrimary} type='submit' disabled={isSubmitting}>
                   {button}
                 </Button>
               </FormContainer>
@@ -122,7 +89,7 @@ const ProductForm = ({ initialValues, onSubmit, title, button, showLabel }) => {
   );
 };
 
-ProductForm.proptypes = {
+ProductForm.propTypes = {
   initialValues: PropTypes.shape({
     sku: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

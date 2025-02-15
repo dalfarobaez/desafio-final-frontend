@@ -1,9 +1,9 @@
-import { Form } from "formik";
-import colors from "../../styles/colors";
-import FlexContainer from "../layout/FlexContainer";
-import styled from "styled-components";
+import { Form } from 'formik';
+import styled from 'styled-components';
+import colors from '../../styles/colors';
+import FlexContainer from '../layout/FlexContainer';
 
-const FormStyle = styled(FlexContainer).attrs({
+const AuthFormStyled = styled(FlexContainer).attrs({
   as: Form,
 })`
   border-radius: 5px;
@@ -24,12 +24,14 @@ const FormStyle = styled(FlexContainer).attrs({
   button {
     align-self: center;
   }
+
   a {
     margin-top: 15px;
     transition: font-weight 300ms ease-in;
+
     &:hover {
       font-weight: 500;
     }
   }
 `;
-export default FormStyle;
+export default AuthFormStyled;

@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Promociones"
+  },
+  {
+    "id": 2,
+    "name": "Platos individuales"
+  },
+  {
+    "id": 3,
+    "name": "Ensaladas & Bowls"
+  },
+  {
+    "id": 4,
+    "name": "Familiares"
+  },
+  {
+    "id": 5,
+    "name": "Panadería"
+  },
+  {
+    "id": 6,
+    "name": "Postres"
+  },
+  {
+    "id": 7,
+    "name": "Aperitivos"
+  },
+  {
+    "id": 8,
+    "name": "Desayunos & Brunch"
+  },
+  {
+    "id": 9,
+    "name": "Empanadas"
+  },
+  {
+    "id": 10,
+    "name": "Bebestibles"
+  },
+  {
+    "id": 11,
+    "name": "Dulces y snacks"
+  },
+  {
+    "id": 12,
+    "name": "Pastelería"
+  }
+]

@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import colors from "../../styles/colors";
-import FlexContainer from "../layout/FlexContainer";
-import { Link } from "react-router-dom";
-import MainWrapper from "../layout/MainWrapper";
+import styled from 'styled-components';
+import colors from '../../styles/colors';
+import FlexContainer from '../layout/FlexContainer';
+import { Link } from 'react-router-dom';
+import MainWrapper from '../layout/MainWrapper';
 
 const FirstContainerStyled = styled(FlexContainer)`
   justify-content: space-between;
@@ -15,20 +15,19 @@ const FirstContainerStyled = styled(FlexContainer)`
   }
 `;
 
-// const LogoContainer=styled()
-
 const SecondContainerStyled = styled(FirstContainerStyled)`
   background-color: ${colors.forkLight};
   height: 55px;
 
   svg:nth-of-type(1) {
+    cursor: pointer;
     width: 50px;
     margin-left: 15px;
   }
 `;
 
 const UserActionsContainerStyled = styled(FlexContainer).attrs({
-  as: "nav",
+  as: 'nav',
 })`
   justify-content: space-between;
   align-items: center;
@@ -116,15 +115,13 @@ const CategoriesOverlay = styled.div`
   left: 0;
   overflow: hidden;
   background-color: ${colors.forkOverlayBg};
-  height: ${({ $isOverlayOpen }) => ($isOverlayOpen ? "100vh" : "0px")};
+  height: ${({ $isOverlayOpen }) => ($isOverlayOpen ? '100vh' : '0px')};
   transition: height 300ms ease-in-out;
 `;
 
 const CategoriesList = styled(FlexContainer)`
   background-color: ${colors.forkWhite};
   flex-direction: column;
-  /* justify-content: flex-start;
-  align-items: flex-start; */
   width: 250px;
   margin-left: 30px;
   border-bottom-left-radius: 4px;
@@ -142,25 +139,12 @@ const CategoriesList = styled(FlexContainer)`
       color: ${colors.forkWhite};
       background-color: ${colors.forkPrimary};
     }
+
     &:last-child {
       border-bottom: none;
       border-bottom-left-radius: 4px;
       border-bottom-right-radius: 4px;
     }
-  }
-`;
-
-const CloseOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.7;
-  }
-  svg {
-    font-size: 40px;
-    color: ${colors.forkWhite};
   }
 `;
 
@@ -173,5 +157,4 @@ export {
   MainWrapperContainer,
   CategoriesOverlay,
   CategoriesList,
-  CloseOverlay,
 };

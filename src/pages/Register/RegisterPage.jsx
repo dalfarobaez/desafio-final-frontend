@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
-import FormStyle from '../../components/authForm/Form';
+import AuthFormStyled from '../../components/authForm/AuthForm.styles';
 import AuthContainer from '../../components/layout/AuthContainer';
 import Button from '../../components/ui/button/Button';
 import InputField from '../../components/ui/inputField/InputField';
@@ -48,40 +48,32 @@ const RegisterPage = () => {
   };
 
   return (
-    <>
-      <AuthContainer>
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-          {({ isSubmitting }) => (
-            <FormStyle>
-              <h2>Regístrate</h2>
-              <InputField label='Nombre' name='firstname' placeholder='Nombre' showError={true} />
-              <InputField label='Apellido' name='lastname' placeholder='Apellido' showError={true} />
-              <InputField label='Teléfono' type='number' name='phone' placeholder='Teléfono' showError={true} />
-              <InputField label='Email' name='email' placeholder='Email' showError={true} />
-              <InputField
-                label='Contraseña'
-                name='password'
-                type='password'
-                placeholder='Contraseña'
-                showError={true}
-              />
-              <InputField
-                label='Confirmar Contraseña'
-                name='confirmpassword'
-                type='password'
-                placeholder='Confirmar contraseña'
-                showError={true}
-              />
+    <AuthContainer>
+      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+        {({ isSubmitting }) => (
+          <AuthFormStyled>
+            <h2>Regístrate</h2>
+            <InputField label='Nombre' name='firstname' placeholder='Nombre' showError={true} />
+            <InputField label='Apellido' name='lastname' placeholder='Apellido' showError={true} />
+            <InputField label='Teléfono' type='number' name='phone' placeholder='Teléfono' showError={true} />
+            <InputField label='Email' name='email' placeholder='Email' showError={true} />
+            <InputField label='Contraseña' name='password' type='password' placeholder='Contraseña' showError={true} />
+            <InputField
+              label='Confirmar Contraseña'
+              name='confirmpassword'
+              type='password'
+              placeholder='Confirmar contraseña'
+              showError={true}
+            />
 
-              <Button background={colors.forkPrimary} width='200px' type='submit' disabled={isSubmitting}>
-                Registrarse
-              </Button>
-              <Link to='/login'>¿Ya tienes cuenta? inicia sesión</Link>
-            </FormStyle>
-          )}
-        </Formik>
-      </AuthContainer>
-    </>
+            <Button background={colors.forkPrimary} width='200px' type='submit' disabled={isSubmitting}>
+              Registrarse
+            </Button>
+            <Link to='/login'>¿Ya tienes cuenta? inicia sesión</Link>
+          </AuthFormStyled>
+        )}
+      </Formik>
+    </AuthContainer>
   );
 };
 

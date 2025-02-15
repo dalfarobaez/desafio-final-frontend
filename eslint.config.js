@@ -21,7 +21,16 @@ export default [
         sourceType: 'module',
       },
     },
-    settings: { react: { version: 'detect' } }, // Detecta automáticamente la versión de React
+    settings: {
+      react: { version: 'detect' }, // Detecta automáticamente la versión de React
+      'import/resolver': {
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
+        webpack: {},
+        typescript: {},
+      },
+    },
     plugins: {
       react,
       'react-hooks': reactHooks,

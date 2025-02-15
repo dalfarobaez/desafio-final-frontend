@@ -1,4 +1,4 @@
-import BreadCrumbs from '../breadcrumbs/BreadCrumbs';
+import BreadCrumbs from '../breadcrumbs/Breadcrumbs';
 import Filters from '../filters/Filters';
 import MainWrapper from '../layout/MainWrapper';
 import { ProductToolbarStyled } from './ProductToolbar.styles';

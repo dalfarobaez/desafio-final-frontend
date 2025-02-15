@@ -1,11 +1,6 @@
-import PropTypes from "prop-types";
-import { useField } from "formik";
-import {
-  Input,
-  InputContainer,
-  ErrorMessage,
-  InputTitle,
-} from "./inputField.styles";
+import { useField } from 'formik';
+import PropTypes from 'prop-types';
+import { Input, InputContainer, ErrorMessage, InputTitle } from './inputField.styles';
 
 const InputField = ({ label, showError, showLabel, ...props }) => {
   const [field, meta] = useField(props);

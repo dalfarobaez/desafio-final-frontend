@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import FlexContainer from "../../layout/FlexContainer";
-import colors from "../../../styles/colors";
-import device from "../../../styles/breakpoints";
+import styled from 'styled-components';
+import device from '../../../styles/breakpoints';
+import colors from '../../../styles/colors';
+import FlexContainer from '../../layout/FlexContainer';
 
 const SelectContainer = styled.div`
   width: 100%;
@@ -21,7 +21,6 @@ const StyledSelect = styled.select`
   width: 100%;
   cursor: pointer;
   font-weight: 600;
-  /* padding: 8px 12px; */
   padding: 10px;
   height: 40px;
   font-weight: 400;
@@ -29,15 +28,16 @@ const StyledSelect = styled.select`
   border: 1px solid ${colors.forkBlack};
   color: ${({ value }) => (value ? colors.forkDark : colors.forkOverlayBg)};
 
-  border: ${({ $error }) =>
-    $error ? `1px solid  ${colors.forkPrimary}` : "none"};
+  border: ${({ $error }) => ($error ? `1px solid  ${colors.forkPrimary}` : 'none')};
 
   &:focus {
     outline: none;
   }
+
   option {
     color: ${colors.forkDark};
   }
+
   option:first-child {
     color: ${colors.forkOverlayBg};
   }
@@ -49,10 +49,11 @@ const ErrorMessage = styled(FlexContainer)`
   height: 35px;
 
   p {
-    margin-left: ${({ $showLabel }) => ($showLabel ? "105px" : "none")};
+    margin-left: ${({ $showLabel }) => ($showLabel ? '105px' : 'none')};
     text-align: start;
     color: ${colors.forkPrimary};
     font-size: 12px;
+
     @media ${device.sm} {
       font-size: 14px;
     }
