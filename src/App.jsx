@@ -1,19 +1,18 @@
-import { HelmetProvider } from "react-helmet-async";
-import { AppContextProvider } from "./context/AppProvider";
-import StoreLayout from "./layouts/StoreLayout/StoreLayout";
-import AppRouter from "./Routes/AppRouter";
-import GlobalStyles from "./styles/GlobalStyles";
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { HelmetProvider } from 'react-helmet-async';
+import AppRouter from './Routes/AppRouter';
+import GlobalStyles from './styles/GlobalStyles';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <GlobalStyles />
       <HelmetProvider>
-        <AppContextProvider>
-          <AppRouter />
-        </AppContextProvider>
+        <AppRouter />
       </HelmetProvider>
-    </>
+    </QueryClientProvider>
   );
 }
 

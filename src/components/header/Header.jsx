@@ -1,6 +1,6 @@
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { categoriesList, truncateString } from '../../utils/strings';
+import { truncateString } from '../../utils/strings';
 import { ForkIcon, LoginIcon, BagIcon } from '../icons';
 import MainWrapper from '../layout/MainWrapper';
 import {
@@ -9,16 +9,17 @@ import {
   CartContainerStyled,
   FirstContainerStyled,
   SecondContainerStyled,
-  MainWrapperContainer,
-  CategoriesList,
-  CategoriesOverlay,
+  MenuContainerStyled,
+  CategoriesListStyled,
+  CategoriesOverlayStyled,
 } from './Header.styles';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import useStoreContext from '../../hooks/useStoreContext';
+import useMenuActions from '../../hooks/useMenuActions';
 
 const Header = () => {
-  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
-  const handleOverlayToggle = () => setIsOverlayOpen(() => !isOverlayOpen);
+  const { categories, categoriesError, categoriesIsLoading } = useStoreContext();
+  const { isOverlayOpen, handleOverlayToggle } = useMenuActions();
 
   return (
     <header>
@@ -45,21 +46,22 @@ const Header = () => {
         </MainWrapper>
       </FirstContainerStyled>
       <SecondContainerStyled>
-        <MainWrapperContainer>
+        <MenuContainerStyled disabled={categoriesIsLoading || categoriesError}>
           <RxHamburgerMenu fontSize={30} onClick={handleOverlayToggle} />
           <p>Productos</p>
-        </MainWrapperContainer>
-        <CategoriesOverlay $isOverlayOpen={isOverlayOpen} onClick={handleOverlayToggle}>
+        </MenuContainerStyled>
+        <CategoriesOverlayStyled $isOverlayOpen={isOverlayOpen} onClick={handleOverlayToggle}>
           <MainWrapper>
-            <CategoriesList onClick={(e) => e.stopPropagation()}>
-              {categoriesList.map((item) => (
-                <Link key={item.value} onClick={handleOverlayToggle} to={`/categoria/${item.value}`}>
-                  {item.label}
-                </Link>
-              ))}
-            </CategoriesList>
+            <CategoriesListStyled onClick={(e) => e.stopPropagation()}>
+              {categories &&
+                categories.map(({ id, name }) => (
+                  <Link key={id} onClick={handleOverlayToggle} to={`/categoria/${id}`}>
+                    {name}
+                  </Link>
+                ))}
+            </CategoriesListStyled>
           </MainWrapper>
-        </CategoriesOverlay>
+        </CategoriesOverlayStyled>
       </SecondContainerStyled>
     </header>
   );

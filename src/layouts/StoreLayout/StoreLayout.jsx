@@ -1,8 +1,7 @@
-import { Outlet } from "react-router-dom";
-import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
-import { StoreLayoutStyled } from "./StoreLayout.styles";
-import styled from "styled-components";
+import { Outlet } from 'react-router-dom';
+import Footer from '../../components/footer/Footer';
+import Header from '../../components/header/Header';
+import { StoreLayoutStyled } from './StoreLayout.styles';
 
 const StoreLayout = () => {
   return (

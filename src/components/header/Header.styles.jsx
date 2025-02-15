@@ -95,10 +95,13 @@ const CartContainerStyled = styled(FlexContainer).attrs({
   }
 `;
 
-const MainWrapperContainer = styled(MainWrapper)`
+const MenuContainerStyled = styled(MainWrapper).attrs({
+  as: 'button',
+})`
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
+  background: transparent;
 
   p {
     font-weight: 600;
@@ -106,7 +109,7 @@ const MainWrapperContainer = styled(MainWrapper)`
   }
 `;
 
-const CategoriesOverlay = styled.div`
+const CategoriesOverlayStyled = styled.div`
   margin-top: 105px;
   width: 100%;
   position: fixed;
@@ -119,7 +122,7 @@ const CategoriesOverlay = styled.div`
   transition: height 300ms ease-in-out;
 `;
 
-const CategoriesList = styled(FlexContainer)`
+const CategoriesListStyled = styled(FlexContainer)`
   background-color: ${colors.forkWhite};
   flex-direction: column;
   width: 250px;
@@ -154,7 +157,7 @@ export {
   UserActionsContainerStyled,
   LoginContainerStyled,
   CartContainerStyled,
-  MainWrapperContainer,
-  CategoriesOverlay,
-  CategoriesList,
+  MenuContainerStyled,
+  CategoriesOverlayStyled,
+  CategoriesListStyled,
 };

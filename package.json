@@ -11,6 +11,7 @@
     "lint:fix": "eslint src --ext .js,.jsx --fix"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.66.0",
     "axios": "^1.7.9",
     "formik": "^2.4.6",
     "prop-types": "^15.8.1",
