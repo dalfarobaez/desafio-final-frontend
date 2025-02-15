@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "categoria_id": 1,
+    "titulo": "Promoción especial",
+    "subtitulo": "Descuento en tu pedido",
+    "precio": 10000,
+    "imagen": "https://corpora-fork.s3.amazonaws.com/back_img/IN112008053-torta-fudge-de-chocolate-dulceria-am-frontal-emplatado-tagpc-830-1690583002531.jpg",
+    "sku": "PROMO100"
+  },
+  {
+    "id": 2,
+    "categoria_id": 2,
+    "titulo": "Plato individual de pasta",
+    "subtitulo": "Fetuccini Alfredo con jamón",
+    "precio": 7500,
+    "imagen": "https://corpora-fork.s3.amazonaws.com/back_img/PTPP01212-fetuccnini-alfredo-jamon-campo-frontal-packaging830%20%281%29-1684523916803.jpg",
+    "sku": "PLATO100"
+  },
+  {
+    "id": 3,
+    "categoria_id": 3,
+    "titulo": "Ensalada fresca",
+    "subtitulo": "Ensalada de pollo con pasta pesto",
+    "precio": 6000,
+    "imagen": "https://corpora-fork.s3.amazonaws.com/back_img/PTPP03068-ensalada-pollo-panko-pasta-pesto-packaging-frontal-ch-830-1728088026171.jpg",
+    "sku": "ENSAL100"
+  },
+  {
+    "id": 4,
+    "categoria_id": 4,
+    "titulo": "Pizza Familiar",
+    "subtitulo": "Pizza de peperoni para toda la familia",
+    "precio": 12000,
+    "imagen": "https://corpora-fork.s3.amazonaws.com/back_img/IN112008053-torta-fudge-de-chocolate-dulceria-am-frontal-emplatado-tagpc-830-1690583002531.jpg",
+    "sku": "PIZZA100"
+  },
+  {
+    "id": 5,
+    "categoria_id": 5,
+    "titulo": "Pan de ajo",
+    "subtitulo": "Delicioso pan de ajo casero",
+    "precio": 3000,
+    "imagen": "https://corpora-fork.s3.amazonaws.com/back_img/PTPP01212-fetuccnini-alfredo-jamon-campo-frontal-packaging830%20%281%29-1684523916803.jpg",
+    "sku": "PAN100"
+  },
+  {
+    "id": 6,
+    "categoria_id": 6,
+    "titulo": "Torta de chocolate",
+    "subtitulo": "Torta fudge de chocolate",
+    "precio": 8000,
+    "imagen": "https://corpora-fork.s3.amazonaws.com/back_img/IN112008053-torta-fudge-de-chocolate-dulceria-am-frontal-emplatado-tagpc-830-1690583002531.jpg",
+    "sku": "TORTA100"
+  },
+  {
+    "id": 7,
+    "categoria_id": 7,
+    "titulo": "Aperitivo mixto",
+    "subtitulo": "Variedad de aperitivos salados",
+    "precio": 4000,
+    "imagen": "https://corpora-fork.s3.amazonaws.com/back_img/PTPP03068-ensalada-pollo-panko-pasta-pesto-packaging-frontal-ch-830-1728088026171.jpg",
+    "sku": "APERI100"
+  },
+  {
+    "id": 8,
+    "categoria_id": 8,
+    "titulo": "Desayuno continental",
+    "subtitulo": "Desayuno completo con café",
+    "precio": 5000,
+    "imagen": "https://corpora-fork.s3.amazonaws.com/back_img/PTPP01212-fetuccnini-alfredo-jamon-campo-frontal-packaging830%20%281%29-1684523916803.jpg",
+    "sku": "DESAYUNO100"
+  },
+  {
+    "id": 9,
+    "categoria_id": 9,
+    "titulo": "Empanadas de pino",
+    "subtitulo": "Empanadas tradicionales de carne",
+    "precio": 1500,
+    "imagen": "https://corpora-fork.s3.amazonaws.com/back_img/IN112008053-torta-fudge-de-chocolate-dulceria-am-frontal-emplatado-tagpc-830-1690583002531.jpg",
+    "sku": "EMPANA100"
+  },
+  {
+    "id": 10,
+    "categoria_id": 10,
+    "titulo": "Jugo natural",
+    "subtitulo": "Jugo de naranja fresco",
+    "precio": 2500,
+    "imagen": "https://corpora-fork.s3.amazonaws.com/back_img/PTPP03068-ensalada-pollo-panko-pasta-pesto-packaging-frontal-ch-830-1728088026171.jpg",
+    "sku": "JU100"
+  },
+  {
+    "id": 11,
+    "categoria_id": 11,
+    "titulo": "Galletas de chocolate",
+    "subtitulo": "Galletas caseras con trozos de chocolate",
+    "precio": 2000,
+    "imagen": "https://corpora-fork.s3.amazonaws.com/back_img/PTPP01212-fetuccnini-alfredo-jamon-campo-frontal-packaging830%20%281%29-1684523916803.jpg",
+    "sku": "GALLET100"
+  },
+  {
+    "id": 12,
+    "categoria_id": 2,
+    "titulo": "Plato individual de pasta 2",
+    "subtitulo": "Fetuccini Alfredo con jamón",
+    "precio": 7500,
+    "imagen": "https://corpora-fork.s3.amazonaws.com/back_img/PTPP01212-fetuccnini-alfredo-jamon-campo-frontal-packaging830%20%281%29-1684523916803.jpg",
+    "sku": "PLATO100"
+  }
+]

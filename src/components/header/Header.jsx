@@ -20,7 +20,6 @@ import useMenuActions from '../../hooks/useMenuActions';
 const Header = () => {
   const { categories, categoriesError, categoriesIsLoading } = useStoreContext();
   const { isOverlayOpen, handleOverlayToggle } = useMenuActions();
-
   return (
     <header>
       <FirstContainerStyled>

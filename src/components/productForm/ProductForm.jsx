@@ -1,8 +1,8 @@
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
+import categoriesList from '../../mocks/categories.json';
 import colors from '../../styles/colors';
-import { categoriesList } from '../../utils/strings';
 import Button from '../ui/button/Button';
 import CheckboxField from '../ui/checkboxField/CheckboxField';
 import InputField from '../ui/inputField/InputField';
