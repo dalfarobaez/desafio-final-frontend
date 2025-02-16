@@ -1,5 +1,6 @@
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { HelmetProvider } from 'react-helmet-async';
+import { AuthContextProvider } from './context/AuthProvider';
 import AppRouter from './Routes/AppRouter';
 import GlobalStyles from './styles/GlobalStyles';
 
@@ -9,9 +10,11 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <GlobalStyles />
-      <HelmetProvider>
-        <AppRouter />
-      </HelmetProvider>
+      <AuthContextProvider>
+        <HelmetProvider>
+          <AppRouter />
+        </HelmetProvider>
+      </AuthContextProvider>
     </QueryClientProvider>
   );
 }

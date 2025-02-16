@@ -13,8 +13,8 @@ const getCategories = async () => {
   //   const { data = [] } = await axiosClient.get('/categories');
   //   return data;
   // } catch (error) {
-  //   console.error(error);
-  //   throw new error();
+  // console.error(error);
+  // throw new error();
   // }
 };
 

@@ -6,6 +6,7 @@ import AuthContainer from '../../components/layout/AuthContainer';
 import Button from '../../components/ui/button/Button';
 import InputField from '../../components/ui/inputField/InputField';
 import colors from '../../styles/colors';
+import useRegister from '../../hooks/useRegister';
 
 const validationSchema = Yup.object({
   firstname: Yup.string()
@@ -33,6 +34,8 @@ const validationSchema = Yup.object({
 });
 
 const RegisterPage = () => {
+  const { handleSubmit } = useRegister();
+
   const initialValues = {
     firstname: '',
     lastname: '',
@@ -40,11 +43,6 @@ const RegisterPage = () => {
     email: '',
     password: '',
     confirmpassword: '',
-  };
-
-  const handleSubmit = (values, { resetForm }) => {
-    console.log('Formulario enviado: ', values);
-    resetForm();
   };
 
   return (
