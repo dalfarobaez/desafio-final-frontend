@@ -11,33 +11,6 @@ const EditProduct = () => {
   const { product, productError, productIsLoading } =
     useLoadProductInfo(productId);
 
-  // const {
-  //   sku,
-  //   title,
-  //   subtitle,
-  //   categoryId,
-  //   price,
-  //   active,
-  //   description,
-  //   featured,
-  //   stock,
-  //   url_image,
-  // } = product;
-  // const initialValues = {
-  //   sku: "21",
-  //   title: "Beef bourguignon",
-  //   subtitle: "Con champiñones y tocino, 4 porciones",
-  //   categoryId: 3,
-  //   price: "18990",
-  //   active: true,
-  //   description:
-  //     "Clásica preparación francesa de carne al vino tinto cocinada lentamente, preparada con tocino, champiñones y vegetales.",
-  //   featured: false,
-  //   stock: "100",
-  //   url_image:
-  //     "https://corpora-fork.s3.amazonaws.com/back_img/PTPP01279-beef-bourguignon-fam-frontal-830-1732567123448.jpg",
-  // };
-
   const initialValues = {
     sku: "",
     title: "",

@@ -13,6 +13,7 @@ import {
   FormWrapper,
   ProductFormStyled,
 } from "./ProductForm.styles";
+import useLoadCategories from "../../hooks/useLoadCategories";
 
 const validationSchema = Yup.object({
   sku: Yup.string().required("Este campo es obligatorio."),
@@ -37,6 +38,9 @@ const ProductForm = ({
   showLabel,
   isLoading,
 }) => {
+  const { categories, categoriesError, categoriesIsLoading } =
+    useLoadCategories();
+
   return (
     <ProductFormStyled>
       <h3>{title}</h3>
@@ -77,11 +81,11 @@ const ProductForm = ({
                 <SelectField
                   label="Categoría"
                   name="categoryId"
-                  options={categoriesList || []}
+                  options={categories || categoriesList}
                   placeholder="Selecciona una categoría"
                   showError
                   showLabel={showLabel}
-                  isLoading={isLoading}
+                  isLoading={categoriesIsLoading || categoriesError}
                 />
 
                 <InputField
