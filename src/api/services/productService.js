@@ -1,5 +1,6 @@
 import categoriesJSON from "../../mocks/categories.json";
 import productsJSON from "../../mocks/products.json";
+import productJSON from "../../mocks/product.json";
 import axiosClient from "../axiosClient";
 
 const getCategories = async () => {
@@ -32,4 +33,20 @@ const getAllProducts = async () => {
   // }
 };
 
-export { getCategories, getAllProducts };
+const getProduct = async (id) => {
+  console.log(id);
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(productJSON);
+    }, 3000);
+  });
+  // try {
+  //   const { data = [] } = await axiosClient.get("/product/:id");
+  //   return data;
+  // } catch (error) {
+  //   console.error(error);
+  //   throw new error();
+  // }
+};
+
+export { getCategories, getAllProducts, getProduct };

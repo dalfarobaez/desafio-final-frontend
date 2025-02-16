@@ -1,15 +1,25 @@
-import { useField } from 'formik';
-import PropTypes from 'prop-types';
-import { Input, InputContainer, ErrorMessage, InputTitle } from './inputField.styles';
+import { useField } from "formik";
+import PropTypes from "prop-types";
+import {
+  Input,
+  InputContainer,
+  ErrorMessage,
+  InputTitle,
+} from "./inputField.styles";
 
-const InputField = ({ label, showError, showLabel, ...props }) => {
+const InputField = ({ label, showError, showLabel, isLoading, ...props }) => {
   const [field, meta] = useField(props);
 
   return (
     <InputContainer>
       <InputTitle>
         {showLabel && <label>{label}</label>}
-        <Input {...field} {...props} $error={meta.touched && meta.error} />
+        <Input
+          {...field}
+          {...props}
+          $error={meta.touched && meta.error}
+          disabled={isLoading}
+        />
       </InputTitle>
       {meta.touched && meta.error && showError ? (
         <ErrorMessage $showLabel={showLabel}>
@@ -27,6 +37,7 @@ InputField.propTypes = {
   placeholder: PropTypes.string,
   showError: PropTypes.bool,
   showLabel: PropTypes.bool,
+  isLoading: PropTypes.bool,
 };
 
 export default InputField;

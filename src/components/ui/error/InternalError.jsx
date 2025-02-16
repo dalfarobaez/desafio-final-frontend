@@ -2,7 +2,7 @@ import { TbFaceIdError } from "react-icons/tb";
 import styled from "styled-components";
 import FlexContainer from "../../layout/FlexContainer";
 
-const Error = () => {
+const InternalError = () => {
   return (
     <ErrorContainer>
       <TbFaceIdError />
@@ -11,7 +11,7 @@ const Error = () => {
   );
 };
 
-export default Error;
+export default InternalError;
 
 const ErrorContainer = styled(FlexContainer)`
   flex-direction: column;

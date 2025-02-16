@@ -1,20 +1,38 @@
-import { useField } from 'formik';
-import PropTypes from 'prop-types';
-import { SelectContainer, SelectTitle, StyledSelect, ErrorMessage } from './SelectField.styles';
+import { useField } from "formik";
+import PropTypes from "prop-types";
+import {
+  SelectContainer,
+  SelectTitle,
+  StyledSelect,
+  ErrorMessage,
+} from "./SelectField.styles";
 
-const SelectField = ({ label, options, placeholder, showError, showLabel, ...props }) => {
+const SelectField = ({
+  label,
+  options,
+  placeholder,
+  showError,
+  showLabel,
+  isLoading,
+  ...props
+}) => {
   const [field, meta] = useField(props);
 
   return (
     <SelectContainer>
       <SelectTitle>
         {showLabel && <label>{label}</label>}
-        <StyledSelect {...field} {...props} $error={meta.touched && meta.error && showError}>
-          {placeholder && <option value=''>{placeholder}</option>}
+        <StyledSelect
+          {...field}
+          {...props}
+          disabled={isLoading}
+          $error={meta.touched && meta.error && showError}
+        >
+          {placeholder && <option value="">{placeholder}</option>}
           {options.map((option) => {
             return (
-              <option key={`${option.value}`} value={option.value}>
-                {option.label}
+              <option key={`${option.id}`} value={option.id}>
+                {option.name}
               </option>
             );
           })}
@@ -35,6 +53,7 @@ SelectField.propTypes = {
   showError: PropTypes.bool,
   showLabel: PropTypes.bool,
   placeholder: PropTypes.string,
+  isLoading: PropTypes.bool,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.number.isRequired,

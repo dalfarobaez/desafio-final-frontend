@@ -13,7 +13,7 @@ import { formatPrice } from "../../../utils/strings";
 import useLoadCatalog from "../../../hooks/useLoadCatalog";
 import useLoadInventory from "../../../hooks/useLoadInventory";
 import Loading from "../../../components/ui/loading/Loading";
-import Error from "../../../components/ui/error/Error";
+import InternalError from "../../../components/ui/error/InternalError";
 
 const productList = [
   { id: 1, sku: "SKU123", name: "Producto A", quantity: 10 },
@@ -32,7 +32,7 @@ const Inventory = () => {
     <InventoryContainer>
       {!productsError && <h2>Inventario de productos</h2>}
       {productsIsLoading && !products && <Loading />}
-      {!productsIsLoading && productsError && <Error />}
+      {!productsIsLoading && productsError && <InternalError />}
       {!productsError && products && (
         <InventoryTable>
           <thead>

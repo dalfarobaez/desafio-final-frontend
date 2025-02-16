@@ -4,7 +4,10 @@
   "titulo": "Galletas de chocolate",
   "subtitulo": "Galletas caseras con trozos de chocolate",
   "precio": 2000,
+  "stock": 123,
   "imagen": "https://corpora-fork.s3.amazonaws.com/back_img/PTPP01212-fetuccnini-alfredo-jamon-campo-frontal-packaging830%20%281%29-1684523916803.jpg",
   "sku": "GALLET100",
-  "descripcion": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  "descripcion": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "destacado": false,
+  "activo": true
 }
