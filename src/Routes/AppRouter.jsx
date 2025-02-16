@@ -20,7 +20,7 @@ import { StoreContextProvider } from '../context/StoreProvider';
 import AdminLogin from '../pages/backoffice/AdminLogin/AdminLogin';
 import AdminRoute from './AdminRoute';
 import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute';
+import AuthRoute from './AuthRoute';
 
 const AppRouter = () => {
   return (
@@ -33,11 +33,11 @@ const AppRouter = () => {
             </StoreContextProvider>
           }
         >
+          <Route path='/' element={<HomePage />} />
+          <Route path='/categoria/:categoryId' element={<ProductCategoryPage />} />
+          <Route path='/categoria/:categoryId/producto/:productId' element={<ProductDetailsPage />} />
           {/* Rutas publicas */}
-          <Route element={<PublicRoute />}>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/categoria/:categoryId' element={<ProductCategoryPage />} />
-            <Route path='/categoria/:categoryId/producto/:productId' element={<ProductDetailsPage />} />
+          <Route element={<AuthRoute />}>
             <Route path='/login' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
           </Route>
