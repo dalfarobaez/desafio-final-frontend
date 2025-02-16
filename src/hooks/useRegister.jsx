@@ -1,14 +1,17 @@
 import { useMutation } from '@tanstack/react-query';
 import { register } from '../api/services/authService';
 import { useNavigate } from 'react-router-dom';
+import useAuthContext from './useAuthContext';
 
 const useRegister = () => {
+  const { setToken } = useAuthContext();
   const navigate = useNavigate();
 
   const mutation = useMutation({
     mutationFn: register,
     onSuccess: (data) => {
       console.log('Registro exitoso', data);
+      setToken(data);
       navigate('/mi-perfil');
     },
     onError: (error) => {

@@ -1,6 +1,6 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import AdminLayout from "../layouts/AdminLayout/AdminLayout";
-import StoreLayout from "../layouts/StoreLayout/StoreLayout";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AdminLayout from '../layouts/AdminLayout/AdminLayout';
+import StoreLayout from '../layouts/StoreLayout/StoreLayout';
 import {
   HomePage,
   ProductCategoryPage,
@@ -11,13 +11,16 @@ import {
   CartPage,
   CheckoutPage,
   NotFoundPage,
-} from "../pages";
-import EditProductPage from "../pages/backoffice/EditProduct/EditProductPage";
-import InventoryPage from "../pages/backoffice/Inventory/InventoryPage";
-import NewProductPage from "../pages/backoffice/NewProduct/NewProductPage";
-import { AdminContextProvider } from "../context/AdminProvider";
-import { StoreContextProvider } from "../context/StoreProvider";
-import AdminLogin from "../pages/backoffice/AdminLogin/AdminLogin";
+} from '../pages';
+import EditProductPage from '../pages/backoffice/EditProduct/EditProductPage';
+import InventoryPage from '../pages/backoffice/Inventory/InventoryPage';
+import NewProductPage from '../pages/backoffice/NewProduct/NewProductPage';
+import { AdminContextProvider } from '../context/AdminProvider';
+import { StoreContextProvider } from '../context/StoreProvider';
+import AdminLogin from '../pages/backoffice/AdminLogin/AdminLogin';
+import AdminRoute from './AdminRoute';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 const AppRouter = () => {
   return (
@@ -30,39 +33,36 @@ const AppRouter = () => {
             </StoreContextProvider>
           }
         >
-          <Route path="/" element={<HomePage />} />
-          <Route
-            path="/categoria/:categoryId"
-            element={<ProductCategoryPage />}
-          />
-          <Route
-            path="/categoria/:categoryId/producto/:productId"
-            element={<ProductDetailsPage />}
-          />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/mi-perfil" element={<ProfilePage />} />
-          <Route path="/carrito" element={<CartPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+          {/* Rutas publicas */}
+          <Route element={<PublicRoute />}>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/categoria/:categoryId' element={<ProductCategoryPage />} />
+            <Route path='/categoria/:categoryId/producto/:productId' element={<ProductDetailsPage />} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+          </Route>
+          {/* Rutas privadas */}
+          <Route element={<PrivateRoute />}>
+            <Route path='/mi-perfil' element={<ProfilePage />} />
+            <Route path='/carrito' element={<CartPage />} />
+            <Route path='/checkout' element={<CheckoutPage />} />
+          </Route>
+          <Route path='*' element={<NotFoundPage />} />
         </Route>
-        <Route path="/backoffice/login" element={<AdminLogin />} />
-        <Route
-          element={
-            <AdminContextProvider>
-              <AdminLayout />
-            </AdminContextProvider>
-          }
-        >
-          <Route path="/backoffice/inventario" element={<InventoryPage />} />
+        <Route path='/backoffice/login' element={<AdminLogin />} />
+        {/* Rutas Admin */}
+        <Route element={<AdminRoute />}>
           <Route
-            path="/backoffice/agregar-producto"
-            element={<NewProductPage />}
-          />
-          <Route
-            path="/backoffice/editar-producto/:productId"
-            element={<EditProductPage />}
-          />
+            element={
+              <AdminContextProvider>
+                <AdminLayout />
+              </AdminContextProvider>
+            }
+          >
+            <Route path='/backoffice/inventario' element={<InventoryPage />} />
+            <Route path='/backoffice/agregar-producto' element={<NewProductPage />} />
+            <Route path='/backoffice/editar-producto/:productId' element={<EditProductPage />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
