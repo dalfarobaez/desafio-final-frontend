@@ -34,7 +34,6 @@ const getAllProducts = async () => {
 };
 
 const getProduct = async (id) => {
-  console.log(id);
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(productJSON);

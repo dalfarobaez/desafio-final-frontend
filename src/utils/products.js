@@ -30,4 +30,14 @@ const getProductsByCategory = (products, categoryId) => {
   return products[categoryId];
 };
 
-export { mapProductsByCategory, getCategoryNameById, getProductsByCategory };
+const getProductTitleById = (productsByCategory, productId) => {
+  return productsByCategory?.find((product) => product.id === Number(productId))
+    ?.title;
+};
+
+export {
+  mapProductsByCategory,
+  getCategoryNameById,
+  getProductsByCategory,
+  getProductTitleById,
+};

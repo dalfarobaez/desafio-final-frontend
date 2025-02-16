@@ -35,7 +35,10 @@ const AppRouter = () => {
             path="/categoria/:categoryId"
             element={<ProductCategoryPage />}
           />
-          <Route path="/producto/:productId" element={<ProductDetailsPage />} />
+          <Route
+            path="/categoria/:categoryId/producto/:productId"
+            element={<ProductDetailsPage />}
+          />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/mi-perfil" element={<ProfilePage />} />

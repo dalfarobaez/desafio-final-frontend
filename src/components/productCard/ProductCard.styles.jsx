@@ -1,8 +1,11 @@
-import styled from 'styled-components';
-import colors from '../../styles/colors';
-import FlexContainer from '../layout/FlexContainer';
+import styled from "styled-components";
+import colors from "../../styles/colors";
+import FlexContainer from "../layout/FlexContainer";
+import { Link } from "react-router-dom";
 
-const ProductCardStyled = styled(FlexContainer)`
+const ProductCardStyled = styled(FlexContainer).attrs({
+  as: Link,
+})`
   height: 450px;
   border-radius: 5px;
   border: 1px solid ${colors.forkLight};
@@ -39,6 +42,7 @@ const TextContainerStyled = styled(FlexContainer)`
 `;
 
 const AddToCartContainerStyled = styled(FlexContainer)`
+  cursor: default;
   padding: 40px 0px 20px 0px;
   margin: 0 20px 0 20px;
   border-top: 1px solid ${colors.forkLight};
