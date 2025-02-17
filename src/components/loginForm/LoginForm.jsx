@@ -8,6 +8,7 @@ import Button from "../../components/ui/button/Button";
 import InputField from "../../components/ui/inputField/InputField";
 import colors from "../../styles/colors";
 import PropTypes from "prop-types";
+import useLogin from "../../hooks/useLogin";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -22,12 +23,13 @@ const validationSchema = Yup.object({
 
 const LoginForm = ({ isAdmin }) => {
   const initialValues = { email: "", password: "" };
+  const { handleSubmit } = useLogin();
 
-  const handleSubmit = (values, { resetForm }) => {
-    console.log("Formulario enviado: ", values);
-    resetForm();
-  };
-  console.log(isAdmin);
+  // const handleSubmit = (values, { resetForm }) => {
+  //   console.log("Formulario enviado: ", values);
+  //   resetForm();
+  // };
+
   return (
     <>
       <AuthContainer $isAdmin={isAdmin}>

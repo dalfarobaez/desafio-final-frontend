@@ -21,6 +21,13 @@ const mapProductsByCategory = (products) => {
   }, {});
 };
 
+const mapCategoriesByName = (categories) => {
+  return categories?.map((category) => ({
+    id: category.id,
+    name: category.nombre,
+  }));
+};
+
 const getCategoryNameById = (categories, categoryId) => {
   return categories.find((category) => category.id === Number(categoryId))
     ?.name;
@@ -40,4 +47,5 @@ export {
   getCategoryNameById,
   getProductsByCategory,
   getProductTitleById,
+  mapCategoriesByName,
 };

@@ -1,13 +1,19 @@
-import PropTypes from 'prop-types';
-import { createContext } from 'react';
-import useUser from '../hooks/useUser';
+import PropTypes from "prop-types";
+import { createContext } from "react";
+import useUser from "../hooks/useUser";
 
 export const AuthContext = createContext({});
 
 export const AuthContextProvider = ({ children }) => {
-  const { user, token, setToken, isAuthLoading } = useUser();
+  const { user, token, setToken, isAuthLoading, logOutUser } = useUser();
 
-  return <AuthContext.Provider value={{ user, token, setToken, isAuthLoading }}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider
+      value={{ user, token, setToken, isAuthLoading, logOutUser }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 AuthContextProvider.propTypes = {

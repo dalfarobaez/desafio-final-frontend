@@ -1,13 +1,21 @@
 import PropTypes from "prop-types";
 import { ButtonStyled } from "./Button.styles";
 
-const Button = ({ children, background, textColor, width, disabled }) => {
+const Button = ({
+  children,
+  background,
+  textColor,
+  width,
+  disabled,
+  onClick,
+}) => {
   return (
     <ButtonStyled
       background={background}
       textColor={textColor}
       width={width}
       disabled={disabled}
+      onClick={onClick}
     >
       {children}
     </ButtonStyled>
@@ -16,6 +24,7 @@ const Button = ({ children, background, textColor, width, disabled }) => {
 
 Button.propTypes = {
   children: PropTypes.node,
+  onClick: PropTypes.func,
   background: PropTypes.string,
   textColor: PropTypes.string,
   width: PropTypes.string,

@@ -1,14 +1,14 @@
-import Cookies from 'js-cookie';
-import { jwtDecode } from 'jwt-decode';
-import { useEffect, useState } from 'react';
-import { ADMIN_ROLE_ID } from '../utils/constants';
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
+import { useEffect, useState } from "react";
+import { ADMIN_ROLE_ID } from "../utils/constants";
 
 const initialState = {
   data: {
-    email: '',
-    firstName: '',
-    lastName: '',
-    phone: '',
+    email: "",
+    firstName: "",
+    lastName: "",
+    phone: "",
   },
   isAdmin: false,
   isAuthenticated: false,
@@ -19,8 +19,14 @@ const useUser = () => {
   const [user, setUser] = useState(initialState);
   const [isAuthLoading, setIsAuthLoading] = useState(true);
 
+  const logOutUser = () => {
+    Cookies.remove("token");
+    setToken(null);
+    setUser(initialState);
+  };
+
   useEffect(() => {
-    const storedToken = Cookies.get('token');
+    const storedToken = Cookies.get("token");
 
     if (storedToken) {
       try {
@@ -40,13 +46,13 @@ const useUser = () => {
           });
           setToken(storedToken);
         } else {
-          Cookies.remove('token');
+          Cookies.remove("token");
           setToken(null);
           setUser(initialState);
         }
       } catch (error) {
-        console.error('Error decoding token:', error);
-        Cookies.remove('token');
+        console.error("Error decoding token:", error);
+        Cookies.remove("token");
         setToken(null);
         setUser(initialState);
       }
@@ -59,6 +65,7 @@ const useUser = () => {
     token,
     setToken,
     isAuthLoading,
+    logOutUser,
   };
 };
 

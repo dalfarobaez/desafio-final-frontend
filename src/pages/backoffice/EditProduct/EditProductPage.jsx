@@ -11,6 +11,8 @@ const EditProduct = () => {
   const { product, productError, productIsLoading } =
     useLoadProductInfo(productId);
 
+  // console.log(product);
+
   const initialValues = {
     sku: "",
     title: "",

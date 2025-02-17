@@ -1,29 +1,53 @@
-import Button from '../ui/button/Button';
+import { useParams } from "react-router-dom";
+import useLoadProductInfo from "../../hooks/useLoadProductInfo";
+import Button from "../ui/button/Button";
 import {
   AddToCartContainerStyled,
   DescStyled,
   ProductDetailsCardStyled,
   TitleContainerStyled,
-} from './ProductDetailsCard.styles';
+} from "./ProductDetailsCard.styles";
+import Loading from "../ui/loading/Loading";
+import InternalError from "../ui/error/InternalError";
+import { formatPrice } from "../../utils/strings";
 
 const ProductDetailsCard = () => {
+  const { productId } = useParams();
+  const { product, productError, productIsLoading } =
+    useLoadProductInfo(productId);
+
+  if (productIsLoading) {
+    return <Loading />;
+  }
+  if (productError) {
+    return <InternalError />;
+  }
+
+  const {
+    active,
+    categoryId,
+    sku,
+    stock,
+    feature,
+    description,
+
+    price,
+
+    subtitle,
+    title,
+    url_image,
+  } = product;
   return (
     <ProductDetailsCardStyled>
       <TitleContainerStyled>
-        <h2>Beef bourguignon</h2>
-        <p>Con champiñones y tocino, 4 porciones</p>
+        <h2>{title}</h2>
+        <p>{subtitle}</p>
       </TitleContainerStyled>
-      <img
-        src='https://corpora-fork.s3.amazonaws.com/back_img/PTPP01279-beef-bourguignon-fam-frontal-830-1732567123448.jpg'
-        alt='aaa'
-      />
-      <DescStyled>
-        Clásica preparación francesa de carne al vino tinto cocinada lentamente, preparada con tocino, champiñones y
-        vegetales.
-      </DescStyled>
+      <img src={url_image} alt={`${title}-image`} />
+      <DescStyled>{description}</DescStyled>
       <AddToCartContainerStyled>
-        <p>$18.990</p>
-        <Button width='200px'>Agregar al carrito</Button>
+        <p>{formatPrice(price)}</p>
+        <Button width="200px">Agregar al carrito</Button>
       </AddToCartContainerStyled>
     </ProductDetailsCardStyled>
   );

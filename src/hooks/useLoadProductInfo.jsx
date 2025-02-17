@@ -7,7 +7,7 @@ const useLoadProductInfo = (id) => {
     error: productError,
     isLoading: productIsLoading,
   } = useQuery({
-    queryKey: ["products", id],
+    queryKey: ["product", id],
     queryFn: () => getProduct(id),
     enabled: !!id,
     staleTime: 1000 * 60 * 15, // 15 MINUTOS
@@ -15,18 +15,31 @@ const useLoadProductInfo = (id) => {
   });
 
   return {
-    product: {
-      sku: product?.sku,
-      title: product?.titulo,
-      subtitle: product?.subtitulo,
-      categoryId: product?.categoria_id,
-      price: product?.precio,
-      description: product?.descripcion,
-      stock: product?.stock,
-      url_image: product?.imagen,
-      active: product?.activo,
-      feature: product?.destacado,
-    },
+    product: productIsLoading
+      ? {
+          sku: "",
+          title: "",
+          subtitle: "",
+          categoryId: 0,
+          price: 0,
+          description: "",
+          stock: 0,
+          url_image: "",
+          active: false,
+          feature: false,
+        }
+      : {
+          sku: product[0]?.sku,
+          title: product[0]?.titulo,
+          subtitle: product[0]?.subtitulo,
+          categoryId: product[0]?.categoria_id,
+          price: product[0]?.precio,
+          description: product[0]?.descripcion,
+          stock: product[0]?.stock,
+          url_image: product[0]?.imagen,
+          active: product[0]?.activo,
+          feature: product[0]?.destacado,
+        },
     productError,
     productIsLoading,
   };

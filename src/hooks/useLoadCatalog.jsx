@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
-import { getAllProducts, getCategories } from '../api/services/productService';
-import { mapProductsByCategory } from '../utils/products';
+import { useQuery } from "@tanstack/react-query";
+import { getAllProducts, getCategories } from "../api/services/productService";
+import { mapCategoriesByName, mapProductsByCategory } from "../utils/products";
 
 const useLoadCatalog = () => {
   const {
@@ -8,7 +8,7 @@ const useLoadCatalog = () => {
     error: categoriesError,
     isLoading: categoriesIsLoading,
   } = useQuery({
-    queryKey: ['categories'],
+    queryKey: ["categories"],
     queryFn: getCategories,
     staleTime: 1000 * 60 * 60, // 1 HORA
     cacheTime: 1000 * 60 * 60, // 1 HORA
@@ -19,7 +19,7 @@ const useLoadCatalog = () => {
     error: productsError,
     isLoading: productsIsLoading,
   } = useQuery({
-    queryKey: ['products'],
+    queryKey: ["products"],
     queryFn: getAllProducts,
     staleTime: 1000 * 60 * 15, // 15 MINUTOS
     cacheTime: 1000 * 60 * 15, // 15 MINUTOS
@@ -32,7 +32,7 @@ const useLoadCatalog = () => {
   }
 
   return {
-    categories,
+    categories: mapCategoriesByName(categories),
     categoriesError,
     categoriesIsLoading,
     productsByCategory,

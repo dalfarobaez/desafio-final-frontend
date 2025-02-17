@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getCategories } from "../api/services/productService";
+import { mapCategoriesByName } from "../utils/products";
 
 const useLoadCategories = () => {
   const {
@@ -12,7 +13,11 @@ const useLoadCategories = () => {
     staleTime: 1000 * 60 * 60, // 1 HORA
     cacheTime: 1000 * 60 * 60, // 1 HORA
   });
-  return { categories, categoriesError, categoriesIsLoading };
+  return {
+    categories: mapCategoriesByName(categories),
+    categoriesError,
+    categoriesIsLoading,
+  };
 };
 
 export default useLoadCategories;
