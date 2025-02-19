@@ -41,7 +41,7 @@ const register = async ({ email, password, firstname, lastname, phone }) => {
       });
     }
 
-    return data;
+    return data.token;
   } catch (error) {
     console.error(error);
     throw new error();

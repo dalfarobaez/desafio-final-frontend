@@ -36,7 +36,6 @@ const useLogin = () => {
   useEffect(() => {
     if (user.isAuthenticated) {
       if (isAdminRoute && user.isAdmin) {
-        console.log('entro a if useffect isAdminRoute && user.isAdmin');
         navigate('/backoffice/inventario');
       } else {
         navigate('/mi-perfil');

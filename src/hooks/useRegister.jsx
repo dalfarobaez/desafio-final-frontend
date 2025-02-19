@@ -9,9 +9,8 @@ const useRegister = () => {
 
   const mutation = useMutation({
     mutationFn: register,
-    onSuccess: (data) => {
-      console.log('Registro exitoso', data);
-      setToken(data);
+    onSuccess: (token) => {
+      setToken(token);
       navigate('/mi-perfil');
     },
     onError: (error) => {
