@@ -1,8 +1,8 @@
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { truncateString } from "../../utils/strings";
-import { ForkIcon, LoginIcon, BagIcon } from "../icons";
-import MainWrapper from "../layout/MainWrapper";
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
+import { RxHamburgerMenu } from 'react-icons/rx';
+import { truncateString } from '../../utils/strings';
+import { ForkIcon, LoginIcon, BagIcon } from '../icons';
+import MainWrapper from '../layout/MainWrapper';
 import {
   LoginContainerStyled,
   UserActionsContainerStyled,
@@ -12,33 +12,28 @@ import {
   MenuContainerStyled,
   CategoriesListStyled,
   CategoriesOverlayStyled,
-} from "./Header.styles";
-import { Link } from "react-router-dom";
-import useStoreContext from "../../hooks/useStoreContext";
-import useMenuActions from "../../hooks/useMenuActions";
-
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthProvider";
-import useAuthContext from "../../hooks/useAuthContext";
+} from './Header.styles';
+import { Link } from 'react-router-dom';
+import useStoreContext from '../../hooks/useStoreContext';
+import useMenuActions from '../../hooks/useMenuActions';
+import useAuthContext from '../../hooks/useAuthContext';
 
 const Header = () => {
-  const { categories, categoriesError, categoriesIsLoading } =
-    useStoreContext();
+  const { categories, categoriesError, categoriesIsLoading } = useStoreContext();
   const { isOverlayOpen, handleOverlayToggle } = useMenuActions();
+  const { user } = useAuthContext();
 
-  const { isAuthLoading, user } = useAuthContext();
+  console.log('user Header', user);
 
   return (
     <header>
       <FirstContainerStyled>
         <MainWrapper>
-          <Link to="/">
+          <Link to='/'>
             <ForkIcon />
           </Link>
           <UserActionsContainerStyled>
-            <LoginContainerStyled
-              to={user.isAuthenticated ? "/mi-perfil" : "/login"}
-            >
+            <LoginContainerStyled to={user.isAuthenticated ? '/mi-perfil' : '/login'}>
               <LoginIcon />
               <div>
                 <p>¡Hola!</p>
@@ -46,7 +41,7 @@ const Header = () => {
                   <p>
                     {user.isAuthenticated
                       ? `${truncateString(user.data.firstName)} ${truncateString(user.data.lastName)}`
-                      : "Inicia sesión"}
+                      : 'Inicia sesión'}
                   </p>
                 ) : (
                   <p>Inicia sesión</p>
@@ -55,7 +50,7 @@ const Header = () => {
                 <MdOutlineKeyboardArrowDown />
               </div>
             </LoginContainerStyled>
-            <CartContainerStyled to="/carrito">
+            <CartContainerStyled to='/carrito'>
               <BagIcon />
               <span>{8}</span>
               <MdOutlineKeyboardArrowDown />
@@ -68,19 +63,12 @@ const Header = () => {
           <RxHamburgerMenu fontSize={30} onClick={handleOverlayToggle} />
           <p>Productos</p>
         </MenuContainerStyled>
-        <CategoriesOverlayStyled
-          $isOverlayOpen={isOverlayOpen}
-          onClick={handleOverlayToggle}
-        >
+        <CategoriesOverlayStyled $isOverlayOpen={isOverlayOpen} onClick={handleOverlayToggle}>
           <MainWrapper>
             <CategoriesListStyled onClick={(e) => e.stopPropagation()}>
               {categories &&
                 categories.map(({ id, name }) => (
-                  <Link
-                    key={id}
-                    onClick={handleOverlayToggle}
-                    to={`/categoria/${id}`}
-                  >
+                  <Link key={id} onClick={handleOverlayToggle} to={`/categoria/${id}`}>
                     {name}
                   </Link>
                 ))}

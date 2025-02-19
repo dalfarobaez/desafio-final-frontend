@@ -1,41 +1,23 @@
-import { useMutation } from "@tanstack/react-query";
-import { login } from "../api/services/authService";
-import { useLocation, useNavigate } from "react-router-dom";
-import useAuthContext from "./useAuthContext";
+import { useMutation } from '@tanstack/react-query';
+import { login } from '../api/services/authService';
+import { useLocation, useNavigate } from 'react-router-dom';
+import useAuthContext from './useAuthContext';
+import { useEffect } from 'react';
 
 const useLogin = () => {
-  const { setToken, user, isAuthLoading } = useAuthContext();
+  const { setToken, user, handleAuthUser } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
-
-  const isAdminRoute = location.pathname.includes("/backoffice/login");
+  const isAdminRoute = location.pathname.includes('/backoffice/login');
 
   const mutation = useMutation({
     mutationFn: login,
-    onSuccess: (data) => {
-      console.log("Login exitoso", data);
-      setToken(data);
-
-      // if (!isAuthLoading) {
-      //   if (isAdminRoute && user.isAdmin) {
-      //     return navigate("/backoffice/inventario");
-      //   }
-      //   navigate("/mi-perfil");
-      // }
-      console.log("auth loading " + isAuthLoading);
-      console.log("is admin route " + isAdminRoute);
-      console.log("is admin " + user.isAdmin);
-      console.log(user);
-
-      if (!isAuthLoading && isAdminRoute && user.isAdmin) {
-        navigate("/backoffice/inventario");
-      }
-      if (!isAuthLoading && !isAdminRoute && !user.isAdmin) {
-        navigate("/mi-perfil");
-      }
+    onSuccess: (token) => {
+      setToken(token);
+      handleAuthUser();
     },
     onError: (error) => {
-      console.error("Error al iniciar sesión", error);
+      console.error('Error al iniciar sesión', error);
     },
   });
 
@@ -45,14 +27,22 @@ const useLogin = () => {
         email: values.email,
         password: values.password,
       });
-      console.log("from handle submit ");
-      console.log(values);
-
       resetForm();
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (user.isAuthenticated) {
+      if (isAdminRoute && user.isAdmin) {
+        console.log('entro a if useffect isAdminRoute && user.isAdmin');
+        navigate('/backoffice/inventario');
+      } else {
+        navigate('/mi-perfil');
+      }
+    }
+  }, [user.isAuthenticated, user.isAdmin]);
 
   return {
     handleSubmit,
