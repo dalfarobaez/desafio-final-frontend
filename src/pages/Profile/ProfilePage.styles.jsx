@@ -15,6 +15,12 @@ const ProfilePageStyled = styled(MainWrapper)`
     color: ${colors.forkDark};
     margin-bottom: 15px;
   }
+
+  > button {
+    width: 100%;
+    max-width: 600px;
+    margin: 30px 0;
+  }
 `;
 
 const ProfileDataContainerStyled = styled(FlexContainer)`

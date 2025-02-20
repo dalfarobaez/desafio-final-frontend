@@ -1,45 +1,36 @@
-import { Formik } from "formik";
-import PropTypes from "prop-types";
-import * as Yup from "yup";
-import categoriesList from "../../mocks/categories.json";
-import colors from "../../styles/colors";
-import Button from "../ui/button/Button";
-import CheckboxField from "../ui/checkboxField/CheckboxField";
-import InputField from "../ui/inputField/InputField";
-import SelectField from "../ui/selectField/SelectField";
-import {
-  CheckboxContainer,
-  FormContainer,
-  FormWrapper,
-  ProductFormStyled,
-} from "./ProductForm.styles";
-import useLoadCategories from "../../hooks/useLoadCategories";
+import { Formik } from 'formik';
+import PropTypes from 'prop-types';
+import * as Yup from 'yup';
+import useEditProductForm from '../../hooks/useEditProductForm';
+import categoriesList from '../../mocks/categories.json';
+import colors from '../../styles/colors';
+import Button from '../ui/button/Button';
+import CheckboxField from '../ui/checkboxField/CheckboxField';
+import InputField from '../ui/inputField/InputField';
+import SelectField from '../ui/selectField/SelectField';
+import { CheckboxContainer, FormContainer, FormWrapper, ProductFormStyled } from './ProductForm.styles';
 
 const validationSchema = Yup.object({
-  sku: Yup.string().required("Este campo es obligatorio."),
-  title: Yup.string().required("Este campo es obligatorio."),
-  subtitle: Yup.string().required("Este campo es obligatorio."),
-  categoryId: Yup.number()
-    .min(0, "Debes seleccionar una categoría válida.")
-    .required("Este campo es obligatorio."),
-  price: Yup.number().required("Este campo es obligatorio."),
+  sku: Yup.string().required('Este campo es obligatorio.'),
+  title: Yup.string().required('Este campo es obligatorio.'),
+  subtitle: Yup.string().required('Este campo es obligatorio.'),
+  categoryId: Yup.number().min(0, 'Debes seleccionar una categoría válida.').required('Este campo es obligatorio.'),
+  price: Yup.number().required('Este campo es obligatorio.'),
   active: Yup.bool(),
-  description: Yup.string().required("Este campo es obligatorio."),
+  description: Yup.string().required('Este campo es obligatorio.'),
   featured: Yup.bool(),
-  stock: Yup.number().required("Este campo es obligatorio."),
-  url_image: Yup.string().required("Este campo es obligatorio."),
+  stock: Yup.number().required('Este campo es obligatorio.'),
+  url_image: Yup.string().required('Este campo es obligatorio.'),
 });
 
-const ProductForm = ({
-  initialValues,
-  onSubmit,
-  title,
-  button,
-  showLabel,
-  isLoading,
-}) => {
-  const { categories, categoriesError, categoriesIsLoading } =
-    useLoadCategories();
+const ProductForm = ({ initialValues, onSubmit, title, button, showLabel, isLoading }) => {
+  const { categories, categoriesError, categoriesIsLoading } = useEditProductForm();
+
+  const categoryOptions = {
+    loading: [{ value: 0, label: 'Cargando...' }],
+    error: [{ value: 0, label: 'Error al cargar categorías' }],
+    categories: categories?.length ? categories : [{ value: 0, label: 'No hay categorías disponibles' }],
+  };
 
   return (
     <ProductFormStyled>
@@ -55,82 +46,85 @@ const ProductForm = ({
             return (
               <FormContainer>
                 <InputField
-                  label="SKU"
-                  name="sku"
-                  placeholder="SKU"
+                  label='SKU'
+                  name='sku'
+                  placeholder='SKU'
                   showError
                   showLabel={showLabel}
                   isLoading={isLoading}
                 />
                 <InputField
-                  label="Título"
-                  name="title"
-                  placeholder="Título"
+                  label='Título'
+                  name='title'
+                  placeholder='Título'
                   showError
                   showLabel={showLabel}
                   isLoading={isLoading}
                 />
                 <InputField
-                  label="Subtítulo"
-                  name="subtitle"
-                  placeholder="Subtítulo"
+                  label='Subtítulo'
+                  name='subtitle'
+                  placeholder='Subtítulo'
                   showError
                   showLabel={showLabel}
                   isLoading={isLoading}
                 />
                 <SelectField
-                  label="Categoría"
-                  name="categoryId"
-                  options={categories || categoriesList}
-                  placeholder="Selecciona una categoría"
+                  label='Categoría'
+                  name='categoryId'
+                  options={
+                    categoriesIsLoading
+                      ? categoryOptions['loading']
+                      : categoriesError
+                        ? categoryOptions['error']
+                        : categoryOptions['categories']
+                  }
+                  placeholder='Selecciona una categoría'
                   showError
                   showLabel={showLabel}
                   isLoading={categoriesIsLoading || categoriesError}
+                  disabled={categoriesIsLoading || categoriesError}
                 />
 
                 <InputField
-                  label="Precio"
-                  name="price"
-                  type="number"
-                  placeholder="Precio"
+                  label='Precio'
+                  name='price'
+                  type='number'
+                  placeholder='Precio'
                   showError
                   showLabel={showLabel}
                   isLoading={isLoading}
                 />
                 <InputField
-                  label="Descripción"
-                  name="description"
-                  placeholder="Descripción"
+                  label='Descripción'
+                  name='description'
+                  placeholder='Descripción'
                   showError
                   showLabel={showLabel}
                   isLoading={isLoading}
                 />
                 <InputField
-                  label="Stock"
-                  name="stock"
-                  type="number"
-                  placeholder="Stock disponible"
+                  label='Stock'
+                  name='stock'
+                  type='number'
+                  placeholder='Stock disponible'
                   showError
                   showLabel={showLabel}
                   isLoading={isLoading}
                 />
                 <InputField
-                  label="URL de Imagen"
-                  name="url_image"
-                  placeholder="URL de la imagen"
+                  label='URL de Imagen'
+                  name='url_image'
+                  placeholder='URL de la imagen'
                   showError
                   showLabel={showLabel}
                   isLoading={isLoading}
                 />
                 <CheckboxContainer>
-                  <CheckboxField label="Activo" name="active" />
-                  <CheckboxField label="Destacado" name="featured" />
+                  <CheckboxField label='Activo' name='active' />
+                  <CheckboxField label='Destacado' name='featured' />
                 </CheckboxContainer>
-                <Button
-                  background={colors.forkPrimary}
-                  type="submit"
-                  disabled={isSubmitting || isLoading}
-                >
+                <Button type='submit' background={colors.forkPrimary} disabled={isSubmitting || isLoading}>
                   {button}
                 </Button>
               </FormContainer>
@@ -148,7 +142,7 @@ ProductForm.propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
     categoryId: PropTypes.number.isRequired,
-    price: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
     active: PropTypes.bool.isRequired,
     description: PropTypes.string,
     featured: PropTypes.bool.isRequired,

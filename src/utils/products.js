@@ -6,7 +6,7 @@ const mapProductFields = (product) => {
     subtitle: product.subtitulo,
     price: product.precio,
     sku: product.sku,
-    image: product.imagen,
+    url_image: product.imagen,
   };
 };
 
@@ -29,8 +29,7 @@ const mapCategoriesByName = (categories) => {
 };
 
 const getCategoryNameById = (categories, categoryId) => {
-  return categories.find((category) => category.id === Number(categoryId))
-    ?.name;
+  return categories.find((category) => category.id === Number(categoryId))?.name;
 };
 
 const getProductsByCategory = (products, categoryId) => {
@@ -38,8 +37,20 @@ const getProductsByCategory = (products, categoryId) => {
 };
 
 const getProductTitleById = (productsByCategory, productId) => {
-  return productsByCategory?.find((product) => product.id === Number(productId))
-    ?.title;
+  return productsByCategory?.find((product) => product.id === Number(productId))?.title;
+};
+
+const mapProductDetailsFields = (product) => {
+  return {
+    id: product.id,
+    sku: product.sku,
+    categoryId: product.categoria_id,
+    title: product.titulo,
+    subtitle: product.subtitulo,
+    price: product.precio,
+    url_image: product.imagen,
+    description: product.descripcion,
+  };
 };
 
 export {
@@ -48,4 +59,5 @@ export {
   getProductsByCategory,
   getProductTitleById,
   mapCategoriesByName,
+  mapProductDetailsFields,
 };

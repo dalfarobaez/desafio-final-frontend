@@ -1,20 +1,19 @@
-import { useParams } from "react-router-dom";
-import useLoadProductInfo from "../../hooks/useLoadProductInfo";
-import Button from "../ui/button/Button";
+import { useParams } from 'react-router-dom';
+import useLoadProductInfo from '../../hooks/useLoadProductInfo';
+import Button from '../ui/button/Button';
 import {
   AddToCartContainerStyled,
   DescStyled,
   ProductDetailsCardStyled,
   TitleContainerStyled,
-} from "./ProductDetailsCard.styles";
-import Loading from "../ui/loading/Loading";
-import InternalError from "../ui/error/InternalError";
-import { formatPrice } from "../../utils/strings";
+} from './ProductDetailsCard.styles';
+import Loading from '../ui/loading/Loading';
+import InternalError from '../ui/error/InternalError';
+import { formatPrice } from '../../utils/strings';
 
 const ProductDetailsCard = () => {
   const { productId } = useParams();
-  const { product, productError, productIsLoading } =
-    useLoadProductInfo(productId);
+  const { product, productError, productIsLoading } = useLoadProductInfo(productId);
 
   if (productIsLoading) {
     return <Loading />;
@@ -23,20 +22,8 @@ const ProductDetailsCard = () => {
     return <InternalError />;
   }
 
-  const {
-    active,
-    categoryId,
-    sku,
-    stock,
-    feature,
-    description,
+  const { description, price, subtitle, title, url_image } = product;
 
-    price,
-
-    subtitle,
-    title,
-    url_image,
-  } = product;
   return (
     <ProductDetailsCardStyled>
       <TitleContainerStyled>
@@ -47,7 +34,7 @@ const ProductDetailsCard = () => {
       <DescStyled>{description}</DescStyled>
       <AddToCartContainerStyled>
         <p>{formatPrice(price)}</p>
-        <Button width="200px">Agregar al carrito</Button>
+        <Button width='200px'>Agregar al carrito</Button>
       </AddToCartContainerStyled>
     </ProductDetailsCardStyled>
   );

@@ -23,8 +23,6 @@ const Header = () => {
   const { isOverlayOpen, handleOverlayToggle } = useMenuActions();
   const { user } = useAuthContext();
 
-  console.log('user Header', user);
-
   return (
     <header>
       <FirstContainerStyled>
@@ -52,7 +50,7 @@ const Header = () => {
             </LoginContainerStyled>
             <CartContainerStyled to='/carrito'>
               <BagIcon />
-              <span>{8}</span>
+              <span>{0}</span>
               <MdOutlineKeyboardArrowDown />
             </CartContainerStyled>
           </UserActionsContainerStyled>
