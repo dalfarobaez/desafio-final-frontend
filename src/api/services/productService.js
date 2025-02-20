@@ -1,4 +1,4 @@
-import { mapProductDetailsFields } from '../../utils/products';
+import { mapProductDetailsFields, sortProductsById } from '../../utils/products';
 import axiosClient from '../axiosClient';
 
 const getCategories = async () => {
@@ -14,7 +14,7 @@ const getCategories = async () => {
 const getAllProducts = async () => {
   try {
     const { data = [] } = await axiosClient.get('/products/all');
-    return data;
+    return sortProductsById(data);
   } catch (error) {
     console.error(error);
     throw new error();
@@ -36,7 +36,6 @@ const getProduct = async (id) => {
 };
 
 const createProduct = async ({ values, token }) => {
-  console.log('VALUES', values);
   const { sku, title, subtitle, description, categoryId, price, active, featured, stock, url_image } = values;
   try {
     const { data = [] } = await axiosClient.post(
