@@ -1,7 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { updateProduct } from '../api/services/productService';
 import useAuthContext from './useAuthContext';
-import useLoadCategories from './useLoadCategories';
 import useLoadProductInfo from './useLoadProductInfo';
 
 const initialValues = {
@@ -20,7 +19,6 @@ const initialValues = {
 const useEditProductForm = (id) => {
   const { token } = useAuthContext();
   const { product, productError, productIsLoading } = useLoadProductInfo(id);
-  const { categories, categoriesError, categoriesIsLoading } = useLoadCategories();
 
   const mutation = useMutation({
     mutationFn: ({ id, values }) => updateProduct({ id, values, token }),
@@ -44,9 +42,6 @@ const useEditProductForm = (id) => {
     product,
     productError,
     productIsLoading,
-    categories,
-    categoriesError,
-    categoriesIsLoading,
   };
 };
 export default useEditProductForm;

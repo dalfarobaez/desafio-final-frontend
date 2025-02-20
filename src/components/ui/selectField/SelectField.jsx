@@ -5,16 +5,18 @@ import { SelectContainer, SelectTitle, StyledSelect, ErrorMessage } from './Sele
 const SelectField = ({ label, options, placeholder, showError, showLabel, isLoading, ...props }) => {
   const [field, meta] = useField(props);
 
+  console.log('options', options);
+
   return (
     <SelectContainer>
       <SelectTitle>
         {showLabel && <label>{label}</label>}
         <StyledSelect {...field} {...props} disabled={isLoading} $error={meta.touched && meta.error && showError}>
           {placeholder && <option value=''>{placeholder}</option>}
-          {options.map((option) => {
+          {options.map((option, index) => {
             return (
-              <option key={`${option.id}`} value={option.id}>
-                {option.name}
+              <option key={option.id ?? option.value ?? `temp-${index}`} value={option.value}>
+                {option.label}
               </option>
             );
           })}

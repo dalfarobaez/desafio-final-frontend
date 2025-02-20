@@ -1,8 +1,8 @@
 import ProductForm from '../../../components/productForm/ProductForm';
-import useCreateProduct from '../../../hooks/useCreateProduct';
+import useCreateProductForm from '../../../hooks/useCreateProductForm';
 
 const NewProduct = () => {
-  const { initialValues, handleSubmit } = useCreateProduct();
+  const { initialValues, handleSubmit } = useCreateProductForm();
 
   return <ProductForm initialValues={initialValues} onSubmit={handleSubmit} title='Nuevo producto' button='Crear' />;
 };

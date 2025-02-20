@@ -1,8 +1,7 @@
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
-import useEditProductForm from '../../hooks/useEditProductForm';
-import categoriesList from '../../mocks/categories.json';
+import useLoadCategories from '../../hooks/useLoadCategories';
 import colors from '../../styles/colors';
 import Button from '../ui/button/Button';
 import CheckboxField from '../ui/checkboxField/CheckboxField';
@@ -24,13 +23,15 @@ const validationSchema = Yup.object({
 });
 
 const ProductForm = ({ initialValues, onSubmit, title, button, showLabel, isLoading }) => {
-  const { categories, categoriesError, categoriesIsLoading } = useEditProductForm();
+  const { categories, categoriesError, categoriesIsLoading } = useLoadCategories();
 
-  const categoryOptions = {
-    loading: [{ value: 0, label: 'Cargando...' }],
-    error: [{ value: 0, label: 'Error al cargar categorías' }],
-    categories: categories?.length ? categories : [{ value: 0, label: 'No hay categorías disponibles' }],
-  };
+  const categoriesOptions =
+    Array.isArray(categories) && categories.length > 0
+      ? categories.map((cat) => ({
+          value: cat.id ?? 0,
+          label: cat.name || 'Categoría sin nombre',
+        }))
+      : [{ value: 0, label: 'No hay categorías disponibles' }];
 
   return (
     <ProductFormStyled>
@@ -69,22 +70,18 @@ const ProductForm = ({ initialValues, onSubmit, title, button, showLabel, isLoad
                   showLabel={showLabel}
                   isLoading={isLoading}
                 />
-                <SelectField
-                  label='Categoría'
-                  name='categoryId'
-                  options={
-                    categoriesIsLoading
-                      ? categoryOptions['loading']
-                      : categoriesError
-                        ? categoryOptions['error']
-                        : categoryOptions['categories']
-                  }
-                  placeholder='Selecciona una categoría'
-                  showError
-                  showLabel={showLabel}
-                  isLoading={categoriesIsLoading || categoriesError}
-                  disabled={categoriesIsLoading || categoriesError}
-                />
+                {!categoriesIsLoading && categories && (
+                  <SelectField
+                    label='Categoría'
+                    name='categoryId'
+                    options={categoriesOptions}
+                    placeholder='Selecciona una categoría'
+                    showError
+                    showLabel={showLabel}
+                    isLoading={categoriesIsLoading || categoriesError}
+                    disabled={categoriesIsLoading || categoriesError}
+                  />
+                )}
 
                 <InputField
                   label='Precio'
@@ -142,11 +139,11 @@ ProductForm.propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
     categoryId: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
+    price: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     active: PropTypes.bool.isRequired,
     description: PropTypes.string,
     featured: PropTypes.bool.isRequired,
-    stock: PropTypes.string.isRequired,
+    stock: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     url_image: PropTypes.string,
   }).isRequired,
   isLoading: PropTypes.bool,

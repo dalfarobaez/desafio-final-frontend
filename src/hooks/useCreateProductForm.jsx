@@ -8,15 +8,15 @@ const initialValues = {
   title: '',
   subtitle: '',
   categoryId: 0,
-  price: 0,
+  price: '',
   active: false,
   description: '',
   featured: false,
-  stock: 0,
+  stock: '',
   url_image: '',
 };
 
-const useCreateProduct = () => {
+const useCreateProductForm = () => {
   const { token } = useAuthContext();
 
   const mutation = useMutation({
@@ -42,4 +42,4 @@ const useCreateProduct = () => {
   };
 };
 
-export default useCreateProduct;
+export default useCreateProductForm;
