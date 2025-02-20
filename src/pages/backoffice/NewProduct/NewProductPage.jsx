@@ -1,11 +1,12 @@
 import ProductForm from "../../../components/productForm/ProductForm";
+import useCreateProduct from "../../../hooks/useCreateProduct";
 
 const NewProduct = () => {
   const initialValues = {
     sku: "",
     title: "",
     subtitle: "",
-    categoryId: 0,
+    categoryId: 1,
     price: "",
     active: false,
     description: "",
@@ -14,10 +15,8 @@ const NewProduct = () => {
     url_image: "",
   };
 
-  const handleSubmit = (values, { resetForm }) => {
-    console.log("Formulario enviado: ", values);
-    resetForm();
-  };
+  const { handleSubmit } = useCreateProduct();
+
   return (
     <ProductForm
       initialValues={initialValues}

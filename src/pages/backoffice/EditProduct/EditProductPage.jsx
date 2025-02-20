@@ -4,14 +4,20 @@ import useLoadProductInfo from "../../../hooks/useLoadProductInfo";
 import Loading from "../../../components/ui/loading/Loading";
 import { LoadingContainer } from "./EditProduct.styles";
 import InternalError from "../../../components/ui/error/InternalError";
+import useUpdateProduct from "../../../hooks/useUpdateProduct";
 
 const EditProduct = () => {
   const { productId } = useParams();
+  const { handleSubmit } = useUpdateProduct();
 
   const { product, productError, productIsLoading } =
     useLoadProductInfo(productId);
 
   // console.log(product);
+
+  const handleUpdate = (values) => {
+    handleSubmit(productId, values);
+  };
 
   const initialValues = {
     sku: "",
@@ -24,11 +30,6 @@ const EditProduct = () => {
     featured: false,
     stock: "",
     url_image: "",
-  };
-
-  const handleSubmit = (values, { resetForm }) => {
-    console.log("Formulario enviado: ", values);
-    resetForm();
   };
 
   if (productIsLoading) {
@@ -50,7 +51,7 @@ const EditProduct = () => {
   return (
     <ProductForm
       initialValues={productIsLoading ? initialValues : product}
-      onSubmit={handleSubmit}
+      onSubmit={handleUpdate}
       title="Editar producto"
       button={productIsLoading ? "Cargando..." : "Guardar producto"}
       showLabel={true}
