@@ -1,22 +1,21 @@
-import { FaBoxes } from "react-icons/fa";
-import { IoLogOutOutline } from "react-icons/io5";
-import { RiAddBoxFill } from "react-icons/ri";
-import { ForkWhiteIcon } from "../icons";
-import { useNavigate } from "react-router-dom";
-import { LogOut, MenuElement, SideMenuContainer } from "./SideMenu.styles";
-
-import useAdminContext from "../../hooks/useAdminContext";
-import useAuthContext from "../../hooks/useAuthContext";
+import { FaBoxes } from 'react-icons/fa';
+import { IoLogOutOutline } from 'react-icons/io5';
+import { RiAddBoxFill } from 'react-icons/ri';
+import { ForkWhiteIcon } from '../icons';
+import { useNavigate } from 'react-router-dom';
+import { LogOut, MenuElement, SideMenuContainer } from './SideMenu.styles';
+import useAuthContext from '../../hooks/useAuthContext';
+import { truncateString } from '../../utils/strings';
 
 const menuItems = [
   {
-    name: "Agregar producto",
-    path: "/backoffice/agregar-producto",
+    name: 'Agregar producto',
+    path: '/backoffice/agregar-producto',
     icon: <RiAddBoxFill />,
   },
   {
-    name: "Inventario",
-    path: "/backoffice/inventario",
+    name: 'Inventario',
+    path: '/backoffice/inventario',
     icon: <FaBoxes />,
   },
 ];
@@ -24,14 +23,16 @@ const menuItems = [
 const SideMenu = () => {
   const { logOutUser, user } = useAuthContext();
   const navigate = useNavigate();
-  console.log(user);
+
   const handleLogout = () => {
     logOutUser();
-    navigate("/backoffice/login");
+    navigate('/backoffice/login');
   };
+
   return (
     <SideMenuContainer>
       <ForkWhiteIcon />
+      <p>{user && truncateString(`${user.data.firstName} ${user.data.lastName}`)}</p>
       {menuItems.map((item) => {
         return (
           <MenuElement key={item.name} to={item.path}>

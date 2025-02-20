@@ -1,7 +1,8 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createProduct } from '../api/services/productService';
 
 import useAuthContext from './useAuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
   sku: '',
@@ -18,10 +19,15 @@ const initialValues = {
 
 const useCreateProductForm = () => {
   const { token } = useAuthContext();
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const mutation = useMutation({
     mutationFn: ({ values }) => createProduct({ values, token }),
-    onSuccess: () => {},
+    onSuccess: () => {
+      queryClient.invalidateQueries(['products']);
+      navigate('/backoffice/inventario');
+    },
     onError: (error) => {
       console.error('Error al crear producto', error);
     },

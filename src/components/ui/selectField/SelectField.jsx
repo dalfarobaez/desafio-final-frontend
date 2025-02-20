@@ -5,8 +5,6 @@ import { SelectContainer, SelectTitle, StyledSelect, ErrorMessage } from './Sele
 const SelectField = ({ label, options, placeholder, showError, showLabel, isLoading, ...props }) => {
   const [field, meta] = useField(props);
 
-  console.log('options', options);
-
   return (
     <SelectContainer>
       <SelectTitle>

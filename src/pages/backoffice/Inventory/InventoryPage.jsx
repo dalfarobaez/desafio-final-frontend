@@ -1,31 +1,18 @@
-import { MdEdit } from "react-icons/md";
-import { FaTrash } from "react-icons/fa";
+import { MdEdit } from 'react-icons/md';
+import { FaTrash } from 'react-icons/fa';
 
-import { Link } from "react-router-dom";
-import {
-  ActionsTable,
-  InventoryContainer,
-  InventoryTable,
-} from "./InventoryPage.styles";
-import { useQuery } from "@tanstack/react-query";
-import { getAllProducts } from "../../../api/services/productService";
-import { formatPrice } from "../../../utils/strings";
-import useLoadCatalog from "../../../hooks/useLoadCatalog";
-import useLoadInventory from "../../../hooks/useLoadInventory";
-import Loading from "../../../components/ui/loading/Loading";
-import InternalError from "../../../components/ui/error/InternalError";
-
-const productList = [
-  { id: 1, sku: "SKU123", name: "Producto A", quantity: 10 },
-  { id: 2, sku: "SKU456", name: "Producto B", quantity: 5 },
-  { id: 3, sku: "SKU789", name: "Producto C", quantity: 20 },
-];
+import { Link } from 'react-router-dom';
+import { ActionsTable, InventoryContainer, InventoryTable } from './InventoryPage.styles';
+import { formatPrice } from '../../../utils/strings';
+import useLoadInventory from '../../../hooks/useLoadInventory';
+import Loading from '../../../components/ui/loading/Loading';
+import InternalError from '../../../components/ui/error/InternalError';
 
 const Inventory = () => {
   const { products, productsError, productsIsLoading } = useLoadInventory();
 
   const handleRemove = () => {
-    console.log("Remove item");
+    console.log('Remove item');
   };
 
   return (

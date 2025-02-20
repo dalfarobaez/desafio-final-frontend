@@ -17,7 +17,13 @@ const SideMenuContainer = styled(FlexContainer)`
   > svg {
     transform: scale(0.8);
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+  }
+
+  > p {
+    color: white;
+    font-weight: 500;
+    margin-bottom: 30px;
   }
 `;
 

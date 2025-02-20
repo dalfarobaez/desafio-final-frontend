@@ -53,6 +53,10 @@ const mapProductDetailsFields = (product) => {
   };
 };
 
+const sortProductsById = (products) => {
+  return products.sort((a, b) => a.id - b.id);
+};
+
 export {
   mapProductsByCategory,
   getCategoryNameById,
@@ -60,4 +64,5 @@ export {
   getProductTitleById,
   mapCategoriesByName,
   mapProductDetailsFields,
+  sortProductsById,
 };
