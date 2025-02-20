@@ -3,6 +3,7 @@ import { login } from '../api/services/authService';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useAuthContext from './useAuthContext';
 import { useEffect } from 'react';
+import { toast } from 'sonner';
 
 const useLogin = () => {
   const { setToken, user, handleAuthUser } = useAuthContext();
@@ -18,6 +19,7 @@ const useLogin = () => {
     },
     onError: (error) => {
       console.error('Error al iniciar sesión', error);
+      toast.error('Error al iniciar sesión');
     },
   });
 
@@ -29,7 +31,7 @@ const useLogin = () => {
       });
       resetForm();
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

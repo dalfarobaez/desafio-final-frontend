@@ -1,14 +1,11 @@
-import { useNavigate } from "react-router-dom";
-import Button from "../../components/ui/button/Button";
-import useAuthContext from "../../hooks/useAuthContext";
-import {
-  ProfileDataContainerStyled,
-  ProfilePageStyled,
-} from "./ProfilePage.styles";
+import { useNavigate } from 'react-router-dom';
+import Button from '../../components/ui/button/Button';
+import useAuthContext from '../../hooks/useAuthContext';
+import { ProfileDataContainerStyled, ProfilePageStyled } from './ProfilePage.styles';
 
 const ProfilePage = () => {
   const {
-    logOutUser,
+    logoutUser,
     user: {
       data: { email, firstName, lastName, phone },
     },
@@ -16,8 +13,8 @@ const ProfilePage = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    logOutUser();
-    navigate("/login");
+    logoutUser();
+    navigate('/login');
   };
 
   return (

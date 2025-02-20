@@ -5,8 +5,8 @@ import useUser from '../hooks/useUser';
 export const AdminContext = createContext({});
 
 export const AdminContextProvider = ({ children }) => {
-  const { user, token, setToken, logOutUser } = useUser();
-  return <AdminContext.Provider value={{ user, token, setToken, logOutUser }}>{children}</AdminContext.Provider>;
+  const { user, token, setToken, logoutUser } = useUser();
+  return <AdminContext.Provider value={{ user, token, setToken, logoutUser }}>{children}</AdminContext.Provider>;
 };
 
 AdminContextProvider.propTypes = {

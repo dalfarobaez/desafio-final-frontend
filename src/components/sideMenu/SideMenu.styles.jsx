@@ -19,12 +19,6 @@ const SideMenuContainer = styled(FlexContainer)`
     margin: 0 auto;
     margin-bottom: 10px;
   }
-
-  > p {
-    color: white;
-    font-weight: 500;
-    margin-bottom: 30px;
-  }
 `;
 
 const MenuElement = styled(FlexContainer).attrs({
@@ -53,10 +47,25 @@ const MenuElement = styled(FlexContainer).attrs({
   }
 `;
 
+const WelcomeText = styled(FlexContainer)`
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  > p {
+    color: white;
+    font-weight: 300;
+    font-size: 14px;
+  }
+
+  > p:nth-of-type(2) {
+    font-weight: 600;
+  }
+`;
+
 const LogOut = styled(MenuElement).attrs({ as: 'div' })`
   cursor: pointer;
   margin-top: auto;
   border-top: 1px solid ${colors.forkLight};
 `;
 
-export { LogOut, MenuElement, SideMenuContainer };
+export { LogOut, MenuElement, SideMenuContainer, WelcomeText };

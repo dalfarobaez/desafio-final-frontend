@@ -1,7 +1,7 @@
-import { Form } from "formik";
-import styled from "styled-components";
-import colors from "../../styles/colors";
-import FlexContainer from "../layout/FlexContainer";
+import { Form } from 'formik';
+import styled from 'styled-components';
+import colors from '../../styles/colors';
+import FlexContainer from '../layout/FlexContainer';
 
 const AuthFormStyled = styled(FlexContainer).attrs({
   as: Form,
@@ -12,9 +12,7 @@ const AuthFormStyled = styled(FlexContainer).attrs({
   width: 100%;
   max-width: 420px;
   min-height: 300px;
-
-  background-color: ${({ $isAdmin }) =>
-    $isAdmin ? colors.forkDark : colors.forkWhite};
+  background-color: ${({ $isAdmin }) => ($isAdmin ? colors.forkDark : colors.forkWhite)};
   color: ${({ $isAdmin }) => ($isAdmin ? colors.forkLight : colors.forkBlack)};
   display: flex;
   flex-flow: column nowrap;

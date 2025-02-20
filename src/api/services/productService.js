@@ -36,8 +36,8 @@ const getProduct = async (id) => {
 };
 
 const createProduct = async ({ values, token }) => {
-  const { sku, title, subtitle, description, categoryId, price, active, featured, stock, url_image } = values;
   try {
+    const { sku, title, subtitle, description, categoryId, price, active, featured, stock, url_image } = values;
     const { data = [] } = await axiosClient.post(
       '/product',
       {
@@ -58,7 +58,6 @@ const createProduct = async ({ values, token }) => {
         },
       }
     );
-    console.log(data);
     return data;
   } catch (error) {
     console.log('error');

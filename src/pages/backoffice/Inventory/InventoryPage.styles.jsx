@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import FlexContainer from "../../../components/layout/FlexContainer";
-import colors from "../../../styles/colors";
+import styled from 'styled-components';
+import FlexContainer from '../../../components/layout/FlexContainer';
+import colors from '../../../styles/colors';
 
 const InventoryContainer = styled(FlexContainer)`
   flex-direction: column;
@@ -19,24 +19,30 @@ const InventoryTable = styled.table`
   max-width: 1200px;
   text-align: left;
   border-collapse: collapse;
+
   thead {
     border-bottom: 1px solid ${colors.forkLight};
     background-color: ${colors.forkLight};
   }
+
   th,
   td {
     text-align: left;
     padding: 8px;
   }
+
   td {
     border-bottom: 1px solid ${colors.forkLight};
   }
 `;
 
-const ActionsTable = styled(FlexContainer).attrs({ as: "td" })`
-  gap: 30px;
+const ActionsTable = styled(FlexContainer).attrs({ as: 'td' })`
+  text-align: center;
+  gap: 10px;
+
   svg {
     cursor: pointer;
+    color: ${colors.forkSecondary};
   }
 `;
 

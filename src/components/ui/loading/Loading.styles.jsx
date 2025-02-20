@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import FlexContainer from "../../layout/FlexContainer";
-import Spinner from "../../../assets/spinner.gif";
+import styled from 'styled-components';
+import Spinner from '../../../assets/spinner.gif';
+import FlexContainer from '../../layout/FlexContainer';
 
 const LoadingContainer = styled(FlexContainer)`
   margin: 0 auto;
@@ -11,9 +11,9 @@ const LoadingContainer = styled(FlexContainer)`
 
 const ImgLoading = styled.img.attrs({
   src: Spinner,
-  alt: "spinner image",
+  alt: 'spinner image',
 })`
-  width: 200px;
+  width: 100px;
 `;
 
 export { ImgLoading, LoadingContainer };

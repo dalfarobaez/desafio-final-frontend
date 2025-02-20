@@ -1,22 +1,9 @@
-import PropTypes from "prop-types";
-import { ButtonStyled } from "./Button.styles";
+import PropTypes from 'prop-types';
+import { ButtonStyled } from './Button.styles';
 
-const Button = ({
-  children,
-  background,
-  textColor,
-  width,
-  disabled,
-  onClick,
-}) => {
+const Button = ({ children, background, textColor, width, disabled, onClick }) => {
   return (
-    <ButtonStyled
-      background={background}
-      textColor={textColor}
-      width={width}
-      disabled={disabled}
-      onClick={onClick}
-    >
+    <ButtonStyled $background={background} $textColor={textColor} $width={width} disabled={disabled} onClick={onClick}>
       {children}
     </ButtonStyled>
   );

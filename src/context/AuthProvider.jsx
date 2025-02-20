@@ -5,14 +5,14 @@ import useUser from '../hooks/useUser';
 export const AuthContext = createContext({});
 
 export const AuthContextProvider = ({ children }) => {
-  const { user, token, setToken, logOutUser, handleAuthUser, isAuthLoading } = useUser();
+  const { user, token, setToken, logoutUser, handleAuthUser, isAuthLoading } = useUser();
 
   return (
     <AuthContext.Provider
       value={{
         user,
         token,
-        logOutUser,
+        logoutUser,
         setToken,
         handleAuthUser,
         isAuthLoading,

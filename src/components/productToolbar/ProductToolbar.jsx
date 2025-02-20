@@ -1,10 +1,9 @@
-import { useParams } from "react-router-dom";
-import BreadCrumbs from "../breadcrumbs/Breadcrumbs";
-import Filters from "../filters/Filters";
-import MainWrapper from "../layout/MainWrapper";
-import { ProductToolbarStyled } from "./ProductToolbar.styles";
-import useStoreContext from "../../hooks/useStoreContext";
-import { getCategoryNameById, getProductTitleById } from "../../utils/products";
+import { useParams } from 'react-router-dom';
+import BreadCrumbs from '../breadcrumbs/Breadcrumbs';
+import MainWrapper from '../layout/MainWrapper';
+import { ProductToolbarStyled } from './ProductToolbar.styles';
+import useStoreContext from '../../hooks/useStoreContext';
+import { getCategoryNameById, getProductTitleById } from '../../utils/products';
 
 const ProductToolbar = () => {
   const {
@@ -17,25 +16,17 @@ const ProductToolbar = () => {
     productsError,
     productsByCategory,
   } = useStoreContext();
-  let categoryName = "";
-  let productName = "";
+  let categoryName = '';
+  let productName = '';
 
   if (categories && activeCategory) {
     categoryName = getCategoryNameById(categories, activeCategory);
   }
   if (productsByCategory) {
-    productName = getProductTitleById(
-      productsByCategory[activeCategory],
-      activeProduct
-    );
+    productName = getProductTitleById(productsByCategory[activeCategory], activeProduct);
   }
 
-  if (
-    categoriesIsLoading ||
-    productsIsLoading ||
-    categoriesError ||
-    productsError
-  ) {
+  if (categoriesIsLoading || productsIsLoading || categoriesError || productsError) {
     return <ProductToolbarStyled></ProductToolbarStyled>;
   }
 
@@ -43,7 +34,6 @@ const ProductToolbar = () => {
     <ProductToolbarStyled>
       <MainWrapper>
         <BreadCrumbs category={categoryName} product={productName} />
-        <Filters />
       </MainWrapper>
     </ProductToolbarStyled>
   );

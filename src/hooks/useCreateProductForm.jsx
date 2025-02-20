@@ -3,6 +3,7 @@ import { createProduct } from '../api/services/productService';
 
 import useAuthContext from './useAuthContext';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const initialValues = {
   sku: '',
@@ -24,12 +25,14 @@ const useCreateProductForm = () => {
 
   const mutation = useMutation({
     mutationFn: ({ values }) => createProduct({ values, token }),
-    onSuccess: () => {
+    onSuccess: (response) => {
       queryClient.invalidateQueries(['products']);
+      toast.success(response?.msg);
       navigate('/backoffice/inventario');
     },
     onError: (error) => {
       console.error('Error al crear producto', error);
+      toast.error('Error al crear producto');
     },
   });
 

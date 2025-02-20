@@ -3,7 +3,7 @@ import { IoLogOutOutline } from 'react-icons/io5';
 import { RiAddBoxFill } from 'react-icons/ri';
 import { ForkWhiteIcon } from '../icons';
 import { useNavigate } from 'react-router-dom';
-import { LogOut, MenuElement, SideMenuContainer } from './SideMenu.styles';
+import { LogOut, MenuElement, SideMenuContainer, WelcomeText } from './SideMenu.styles';
 import useAuthContext from '../../hooks/useAuthContext';
 import { truncateString } from '../../utils/strings';
 
@@ -21,18 +21,21 @@ const menuItems = [
 ];
 
 const SideMenu = () => {
-  const { logOutUser, user } = useAuthContext();
+  const { logoutUser, user } = useAuthContext();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logOutUser();
+    logoutUser();
     navigate('/backoffice/login');
   };
 
   return (
     <SideMenuContainer>
       <ForkWhiteIcon />
-      <p>{user && truncateString(`${user.data.firstName} ${user.data.lastName}`)}</p>
+      <WelcomeText>
+        <p>¡Bienvenido!</p>
+        <p>{user && truncateString(`${user.data.firstName} ${user.data.lastName}`)}</p>
+      </WelcomeText>
       {menuItems.map((item) => {
         return (
           <MenuElement key={item.name} to={item.path}>

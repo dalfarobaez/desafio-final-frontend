@@ -19,7 +19,7 @@ const useUser = () => {
   const [user, setUser] = useState(initialState);
   const [isAuthLoading, setIsAuthLoading] = useState(true);
 
-  const logOutUser = () => {
+  const logoutUser = () => {
     Cookies.remove('token');
     setUser(initialState);
     setToken(null);
@@ -49,11 +49,11 @@ const useUser = () => {
           isAdmin: roleId === ADMIN_ROLE_ID ? true : false,
         });
       } else {
-        logOutUser();
+        logoutUser();
       }
     } catch (error) {
       console.error('Error decoding token:', error);
-      logOutUser();
+      logoutUser();
     }
 
     setIsAuthLoading(false);
@@ -67,7 +67,7 @@ const useUser = () => {
     user,
     token,
     setToken,
-    logOutUser,
+    logoutUser,
     handleAuthUser,
     isAuthLoading,
   };

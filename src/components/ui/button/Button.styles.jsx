@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import colors from '../../../styles/colors';
 
 const ButtonStyled = styled.button`
-  background-color: ${(props) => props.background || colors.forkBlack};
-  color: ${(props) => props.textColor || colors.forkWhite};
-  width: ${(props) => props.width || '100%'};
+  background-color: ${({ $background }) => $background || colors.forkBlack};
+  color: ${({ $textColor }) => $textColor || colors.forkWhite};
+  width: ${({ $width }) => $width || '100%'};
   height: 30px;
   font-size: 14px;
   font-weight: 500;

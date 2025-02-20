@@ -11,13 +11,9 @@ import InternalError from '../../../components/ui/error/InternalError';
 const Inventory = () => {
   const { products, productsError, productsIsLoading } = useLoadInventory();
 
-  const handleRemove = () => {
-    console.log('Remove item');
-  };
-
   return (
     <InventoryContainer>
-      {!productsError && <h2>Inventario de productos</h2>}
+      {!productsError && <h2>INVENTARIO</h2>}
       {productsIsLoading && !products && <Loading />}
       {!productsIsLoading && productsError && <InternalError />}
       {!productsError && products && (
@@ -43,7 +39,7 @@ const Inventory = () => {
                     <Link to={`/backoffice/editar-producto/${product.id}`}>
                       <MdEdit />
                     </Link>
-                    <FaTrash onClick={handleRemove} />
+                    <FaTrash onClick={() => console.log('Remove item')} />
                   </ActionsTable>
                 </tr>
               );
