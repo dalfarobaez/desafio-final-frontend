@@ -1,6 +1,6 @@
 import NotFoundPage from './404/NotFoundPage';
 import CartPage from './Cart/CartPage';
-import CheckoutPage from './checkout/CheckoutPage';
+import CheckoutPage from './Checkout/CheckoutPage';
 import HomePage from './Home/HomePage';
 import LoginPage from './Login/LoginPage';
 import ProductCategoryPage from './ProductCategory/ProductCategoryPage';
